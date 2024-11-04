@@ -85,6 +85,32 @@ form {
   color: #1c1b1f;
 }
 
+.password-eye-container {
+  display: flex;
+  justify-content: end;
+}
+
+.password-eye-button {
+  display: inline-block;
+  position: absolute;
+  margin-right: 12px;
+  margin-top: 40px;
+}
+
+.password-eye-button:hover {
+  cursor: pointer;
+}
+
+.password-eye-button.open .open-eye-img,
+.password-eye-button .closed-eye-img {
+  display: none;
+}
+
+.password-eye-button .open-eye-img,
+.password-eye-button.open .closed-eye-img {
+  display: block;
+}
+
 .remember-recover-password-container {
   display: grid;
   grid-template-columns: auto auto;

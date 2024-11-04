@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Если страница не грузится, убираем код отсюда-->
+    <!--Если страница не грузится, убираем код от сюда-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -33,11 +33,18 @@
                     <label class="input-info" for="login">Почта</label>
                     <input id='login' type="text" name="login" required>
                     <label class="input-info" for="password">Пароль</label>
+                    <div class="password-eye-container">
+                        <div class="password-eye-button">
+                            <img class="open-eye-img" src="./img/eye-open.svg" alt="Показать пароль">
+                            <img class="closed-eye-img" src="./img/eye-closed.svg" alt="Скрыть пароль">
+                        </div>
+                    </div>
                     <input id="password" type="password" name="password" required>
 
                     <div class="remember-recover-password-container">
                         <div class="remember">
-                            <input type="checkbox"> <span class="remember-text">Запомнить меня</span>
+                            <input type="checkbox" id="remember"> <label class="remember-text" for="remember">Запомнить
+                                меня</label>
                         </div>
                         <div class="recover-password">
                             <a href="#">Забыл пароль</a>
@@ -51,6 +58,7 @@
             </div>
         </div>
     </main>
+    <script src="js/authorization.js"></script>
 </body>
 
 </html>
