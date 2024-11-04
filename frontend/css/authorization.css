@@ -103,12 +103,12 @@ form {
 
 .password-eye-button.open .open-eye-img,
 .password-eye-button .closed-eye-img {
-  display: none;
+  display: block;
 }
 
 .password-eye-button .open-eye-img,
 .password-eye-button.open .closed-eye-img {
-  display: block;
+  display: none;
 }
 
 .remember-recover-password-container {
@@ -149,6 +149,10 @@ form {
   background-color: #8f84cf;
   color: #ffffff;
   margin-top: 7px;
+}
+
+.auth_submit_button:hover {
+  cursor: pointer;
 }
 
 .no-account {
