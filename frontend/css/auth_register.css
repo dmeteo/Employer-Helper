@@ -1,20 +1,9 @@
+body {
+  display: block;
+}
+
 header {
   margin: 0 54px;
-}
-
-.top-home-link {
-  display: flex;
-  padding: 22px 0 0;
-}
-
-.top-home-link h2 {
-  margin-left: 22px;
-  color: #6956e5;
-  font-family: Manrope;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 30.05px;
-  text-align: left;
 }
 
 main {
@@ -33,6 +22,7 @@ main {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding-bottom: 2%;
 }
 
 h1 {
@@ -224,10 +214,6 @@ input[type="password"] {
   background-color: #8f84cf;
   color: #ffffff;
   margin-top: 7px;
-}
-
-.auth_submit_button:hover {
-  cursor: pointer;
 }
 
 .no-account {

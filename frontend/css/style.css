@@ -40,3 +40,102 @@ p {
   margin: 0;
   padding: 0;
 }
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.home-link {
+  display: flex;
+  padding: 22px 0 0;
+}
+
+.home-link h2 {
+  margin-left: 22px;
+  color: #6956e5;
+  font-family: Manrope;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30.05px;
+  text-align: left;
+}
+
+body {
+  display: flex;
+}
+
+.aside-navbar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #f5f5f5;
+  padding: 55px;
+  gap: 40px;
+}
+
+.nav-link {
+  display: flex;
+  gap: 16px;
+  margin-left: 5px;
+}
+
+.nav-link p {
+  font-family: Manrope;
+  font-size: 18px;
+  font-weight: 500;
+  color: #878787;
+}
+
+.contents {
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 136px;
+  padding: 0 81px 0 35px;
+}
+
+.header-left-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 33.6px;
+}
+
+.greeting {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 700;
+  color: #3e435d;
+}
+
+.header-date {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 24px;
+  color: #878787;
+}
+
+.header-tool-bar {
+  display: flex;
+  align-items: center;
+  gap: 79px;
+  padding-top: 5px;
+}
+
+.header-gradient {
+  width: calc(100% - 56px);
+  height: 83px;
+  background: linear-gradient(0.25turn, rgba(0, 0, 0, 0), #beb5f4);
+  border-radius: 10px;
+}
+
+.main {
+  height: 100%;
+}
