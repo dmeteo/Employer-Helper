@@ -12,7 +12,7 @@
         rel="stylesheet">
     <!--по сюда-->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/authorization.css">
+    <link rel="stylesheet" href="css/auth_register.css">
     <title>Вход</title>
 </head>
 
@@ -30,20 +30,27 @@
                 <h1>Авторизация</h1>
                 <p class="enter-info">Войдите, чтобы продолжить</p>
                 <form>
-                    <label class="input-info" for="login">Почта</label>
-                    <input id='login' type="text" name="login" required>
-                    <label class="input-info" for="password">Пароль</label>
-                    <div class="password-eye-container">
-                        <div class="password-eye-button">
-                            <img class="open-eye-img" src="./img/eye-open.svg" alt="Скрыть пароль">
-                            <img class="closed-eye-img" src="./img/eye-closed.svg" alt="Показать пароль">
+                    <div class="input-container">
+                        <label class="input-info" for="email-input">Почта</label>
+                        <input id='email-input' type="text" name="email" required>
+                    </div>
+
+                    <div class="input-container">
+                        <label class="input-info" for="password-input">Пароль</label>
+                        <div class="password-eye-container">
+                            <div class="password-eye-button">
+                                <img class="open-eye-img" src="./img/eye-open.svg" alt="Скрыть пароль">
+                                <img class="closed-eye-img" src="./img/eye-closed.svg" alt="Показать пароль">
+                            </div>
                         </div>
                     </div>
-                    <input id="password" type="password" name="password" required>
+
+
+                    <input id="password-input" type="password" name="password" required>
 
                     <div class="remember-recover-password-container">
                         <div class="remember">
-                            <input type="checkbox" id="remember">
+                            <input type="checkbox" id="remember" name="remember">
                             <label class="remember-text" for="remember">Запомнить меня</label>
                         </div>
                         <div class="recover-password">
@@ -54,11 +61,12 @@
                     <button class="auth_submit_button" type="submit">Войти</button>
                 </form>
 
-                <p class="no-account">Еще нет аккаунта? <a href="#" class="register">Зарегистрируйтесь</a></p>
+                <p class="no-account">Еще нет аккаунта? <a href="./registration.html"
+                        class="register">Зарегистрируйтесь</a></p>
             </div>
         </div>
     </main>
-    <script src="js/authorization.js"></script>
+    <script src="js/auth_register.js"></script>
 </body>
 
 </html>
