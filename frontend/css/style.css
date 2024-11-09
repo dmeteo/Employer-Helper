@@ -136,6 +136,8 @@ body {
   border-radius: 10px;
 }
 
-.main {
-  height: 100%;
+main {
+  height: calc(100% - 136px - 83px);
+  width: 100%;
+  padding: 40px 99px 0 80px;
 }

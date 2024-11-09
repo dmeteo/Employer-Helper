@@ -16,7 +16,7 @@
 
 <body>
     <aside class="aside-navbar">
-        <a href="index.html" class="home-link">
+        <a href="./" class="home-link">
             <img src="img/logo.svg" alt="Логотип">
             <h2 hidden>Название</h2>
         </a>
@@ -58,10 +58,54 @@
         <div class="header-gradient"></div>
 
         <main>
-            <h1></h1>
+            <div class="short-profile-info">
+                <img src="img/user-1.svg" alt="Пользователь">
+                <div class="short-profile-info-text">
+                    <p class="short-profile-name">Александр Александров</p>
+                    <p class="short-profile-email">xxxxxx@gmail.com</p>
+                </div>
+            </div>
+            <form class="profile-info">
+                <div class="profile-info-item">
+                    <label class="profile-info-label" for="profile-name-input">Имя</label>
+                    <input id="profile-name-input" class="profile-info-input" type="text" name="name" value="Александр"
+                        disabled>
+                </div>
+                <div class="profile-info-item">
+                    <label class="profile-info-label" for="profile-lastname-input">Фамилия</label>
+                    <input id="profile-lastname-input" class="profile-info-input" type="text" name="lastname"
+                        value="Алесандров" disabled>
+                </div>
+                <div class="profile-info-item">
+                    <label class="profile-info-label" for="profile-middlename-input">Отчество</label>
+                    <input id="profile-middlename-input" class="profile-info-input" type="text" name="middlename"
+                        value="Александрович" disabled>
+                </div>
+                <div class="profile-info-item">
+                    <label class="profile-info-label" for="profile-email-input">Почта</label>
+                    <input id="profile-email-input" class="profile-info-input" type="text" name="email"
+                        value="xxxx@gmail.ru" disabled>
+                </div>
+                <div class="profile-info-item">
+                    <label class="profile-info-label" for="profile-password-input">Пароль</label>
+                    <input id="profile-password-input" class="profile-info-input" type="password" name="password"
+                        value="qwerty1234" disabled>
+                </div>
+                <div class="profile-info-item">
+                    <label class="profile-info-label" for="profile-language-input">Язык</label>
+                    <input id="profile-language-input" class="profile-info-input" type="text" name="language"
+                        value="Русский" disabled>
+                </div>
+                <div class="profile-info-buttons">
+                    <button type="button" class="profile-info-edit-button">Редактировать</button>
+                    <button type="button" class="profile-info-cansel-button" hidden>Отмена</button>
+                    <button type="submit" class="profile-info-save-button" hidden>Сохранить</button>
+                </div>
+            </form>
         </main>
     </div>
-
+    <script src="./js/profile.js"></script>
+    <script src="./js//aside_bar.js"></script>
 </body>
 
 </html>
