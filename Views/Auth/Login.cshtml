@@ -1,0 +1,47 @@
+﻿@model AuthorizationViewModel
+
+<main>
+    <div class="container">
+        <div class="inner-container">
+            <h1>Авторизация</h1>
+            <p class="enter-info">Войдите, чтобы продолжить</p>
+            <form asp-action="Authorization" asp-controller="Auth" method="post">
+                <div class="input-container">
+                    <label class="input-info" for="email-input">Почта</label>
+                    <input id='email-input' asp-for="@Model.Email" type="text" name="email" required>
+                </div>
+
+                <div class="input-container">
+                    <label class="input-info" for="password-input">Пароль</label>
+                    <div class="password-eye-container">
+                        <div class="password-eye-button">
+                            <img class="open-eye-img" src="~/img/eye-open.svg" alt="Скрыть пароль">
+                            <img class="closed-eye-img" src="~/img/eye-closed.svg" alt="Показать пароль">
+                        </div>
+                    </div>
+                </div>
+
+
+                <input id="password-input" asp-for="@Model.Password" type="password" name="password" required>
+
+                <div class="remember-recover-password-container">
+                    <div class="remember">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label class="remember-text" for="remember">Запомнить меня</label>
+                    </div>
+                    <div class="recover-password">
+                        <a href="#">Забыл пароль</a>
+                    </div>
+                </div>
+
+                <button class="auth_submit_button" type="submit">Войти</button>
+            </form>
+
+            <p class="no-account">
+                Еще нет аккаунта? <a href="./registration.html"
+                                        class="register">Зарегистрируйтесь</a>
+            </p>
+        </div>
+    </div>
+</main>
+<script src="~js/auth_register.js"></script>

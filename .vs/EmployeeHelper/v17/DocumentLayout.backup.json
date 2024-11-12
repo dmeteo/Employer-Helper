@@ -1,0 +1,313 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Employee-Helper\\EmployeeHelper\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\initializers\\identityinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:initializers\\identityinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\initializers\\dbcontextinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:initializers\\dbcontextinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\infrastructure\\dataaccess\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:infrastructure\\dataaccess\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\infrastructure\\abstractions\\iappdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:infrastructure\\abstractions\\iappdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\domain\\applicationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:domain\\applicationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\viewmodels\\registrationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:viewmodels\\registrationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\viewmodels\\authorizationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:viewmodels\\authorizationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\usecases\\registration\\registrationcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:usecases\\registration\\registrationcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\usecases\\registration\\registrationcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:usecases\\registration\\registrationcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\usecases\\login\\logincommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:usecases\\login\\logincommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\views\\auth\\registration.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:views\\auth\\registration.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\views\\userprofile\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:views\\userprofile\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|d:\\employee-helper\\employeehelper\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76356747-24CE-4597-8851-1BD4FD272416}|EmployeeHelper.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 296,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\Infrastructure\\DataAccess\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\DataAccess\\AppDbContext.cs",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\Infrastructure\\DataAccess\\AppDbContext.cs",
+              "RelativeToolTip": "Infrastructure\\DataAccess\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T00:49:11.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IAppDbContext.cs",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\Infrastructure\\Abstractions\\IAppDbContext.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Abstractions\\IAppDbContext.cs",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\Infrastructure\\Abstractions\\IAppDbContext.cs",
+              "RelativeToolTip": "Infrastructure\\Abstractions\\IAppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T00:49:04.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\Domain\\User.cs",
+              "RelativeDocumentMoniker": "Domain\\User.cs",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\Domain\\User.cs",
+              "RelativeToolTip": "Domain\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T00:48:55.471Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApplicationRole.cs",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\Domain\\ApplicationRole.cs",
+              "RelativeDocumentMoniker": "Domain\\ApplicationRole.cs",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\Domain\\ApplicationRole.cs",
+              "RelativeToolTip": "Domain\\ApplicationRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T00:48:54.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AuthorizationViewModel.cs",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\ViewModels\\AuthorizationViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\AuthorizationViewModel.cs",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\ViewModels\\AuthorizationViewModel.cs",
+              "RelativeToolTip": "ViewModels\\AuthorizationViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T00:48:44.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DbContextInitializer.cs",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\Initializers\\DbContextInitializer.cs",
+              "RelativeDocumentMoniker": "Initializers\\DbContextInitializer.cs",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\Initializers\\DbContextInitializer.cs",
+              "RelativeToolTip": "Initializers\\DbContextInitializer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T00:47:51.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T21:49:49.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IdentityInitializer.cs",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\Initializers\\IdentityInitializer.cs",
+              "RelativeDocumentMoniker": "Initializers\\IdentityInitializer.cs",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\Initializers\\IdentityInitializer.cs",
+              "RelativeToolTip": "Initializers\\IdentityInitializer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T00:43:47.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RegistrationCommand.cs",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\UseCases\\Registration\\RegistrationCommand.cs",
+              "RelativeDocumentMoniker": "UseCases\\Registration\\RegistrationCommand.cs",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\UseCases\\Registration\\RegistrationCommand.cs",
+              "RelativeToolTip": "UseCases\\Registration\\RegistrationCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T00:43:54.972Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RegistrationCommandHandler.cs",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\UseCases\\Registration\\RegistrationCommandHandler.cs",
+              "RelativeDocumentMoniker": "UseCases\\Registration\\RegistrationCommandHandler.cs",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\UseCases\\Registration\\RegistrationCommandHandler.cs",
+              "RelativeToolTip": "UseCases\\Registration\\RegistrationCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T00:43:56.612Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RegistrationViewModel.cs",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\ViewModels\\RegistrationViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\RegistrationViewModel.cs",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\ViewModels\\RegistrationViewModel.cs",
+              "RelativeToolTip": "ViewModels\\RegistrationViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T23:32:05.078Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\Views\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\Auth\\Login.cshtml",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\Views\\Auth\\Login.cshtml",
+              "RelativeToolTip": "Views\\Auth\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T22:25:33.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LoginCommandHandler.cs",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\UseCases\\Login\\LoginCommandHandler.cs",
+              "RelativeDocumentMoniker": "UseCases\\Login\\LoginCommandHandler.cs",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\UseCases\\Login\\LoginCommandHandler.cs",
+              "RelativeToolTip": "UseCases\\Login\\LoginCommandHandler.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T00:35:14.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T23:41:22.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Registration.cshtml",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\Views\\Auth\\Registration.cshtml",
+              "RelativeDocumentMoniker": "Views\\Auth\\Registration.cshtml",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\Views\\Auth\\Registration.cshtml",
+              "RelativeToolTip": "Views\\Auth\\Registration.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T22:25:35.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Profile.cshtml",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\Views\\UserProfile\\Profile.cshtml",
+              "RelativeDocumentMoniker": "Views\\UserProfile\\Profile.cshtml",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\Views\\UserProfile\\Profile.cshtml",
+              "RelativeToolTip": "Views\\UserProfile\\Profile.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-12T00:37:30.124Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Employee-Helper\\EmployeeHelper\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Employee-Helper\\EmployeeHelper\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T17:29:12.807Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

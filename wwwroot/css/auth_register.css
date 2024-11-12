@@ -1,0 +1,229 @@
+body {
+  display: block;
+}
+
+header {
+  margin: 0 54px;
+}
+
+main {
+  height: calc(100% - 77px);
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.inner-container {
+  width: 555px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 2%;
+}
+
+h1 {
+  font-family: Inter;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 48.41px;
+  margin-bottom: 16px;
+  color: #313131;
+}
+.enter-info {
+  /* Не удалось подключить шрифт Poppins */
+  font-family: Inter;
+  color: #313131;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 26px;
+}
+
+form {
+  width: 100%;
+}
+
+.input-info {
+  position: absolute;
+  margin-top: -10px;
+  margin-left: 12px;
+  padding: 0 4px;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: left;
+  color: #1c1b1f;
+  background-color: #ffffff;
+}
+
+input[type="text"],
+input[type="password"] {
+  display: block;
+  height: 56px;
+  width: 100%;
+  margin-bottom: 24px;
+  border: 1px solid #79747e;
+  border-radius: 4px;
+  padding-left: 16px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #1c1b1f;
+}
+
+.register-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 24px;
+}
+
+.password-eye-container {
+  display: flex;
+  justify-content: end;
+}
+
+.password-eye-button {
+  display: inline-block;
+  position: absolute;
+  margin-right: 12px;
+  margin-top: 16px;
+}
+
+.password-eye-button:hover {
+  cursor: pointer;
+}
+
+.password-eye-button.open .open-eye-img,
+.password-eye-button .closed-eye-img {
+  display: block;
+}
+
+.password-eye-button .open-eye-img,
+.password-eye-button.open .closed-eye-img {
+  display: none;
+}
+
+.remember-recover-password-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-top: 39px;
+}
+
+.remember [type="checkbox"] {
+  margin: 0;
+  width: 0;
+  height: 0;
+  display: inline;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.remember [type="checkbox"] + label:before {
+  position: relative;
+  top: 2px;
+  content: "";
+  display: inline-block;
+  vertical-align: top;
+  height: 1.15em;
+  width: 1.15em;
+  margin-right: 0.6em;
+  color: rgba(0, 0, 0, 0.275);
+  border: solid 0.06em;
+  box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em inset,
+    0 0 0 0.07em transparent inset;
+  border-radius: 0.2em;
+  background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xml:space="preserve" fill="white" viewBox="0 0 9 9"><rect x="0" y="4.3" transform="matrix(-0.707 -0.7072 0.7072 -0.707 0.5891 10.4702)" width="4.3" height="1.6" /><rect x="2.2" y="2.9" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 12.1877 2.9833)" width="6.1" height="1.7" /></svg>')
+      no-repeat center,
+    white;
+  background-size: 0;
+  will-change: color, border, background, background-size, box-shadow;
+  transform: translate3d(0, 0, 0);
+  transition: color 0.1s, border 0.1s, background 0.15s, box-shadow 0.1s;
+}
+
+.remember [type="checkbox"]:enabled:active + label:before,
+.remember [type="checkbox"]:enabled + label:active:before {
+  box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em transparent inset,
+    0 0 0 0.07em rgba(0, 0, 0, 0.1) inset;
+  background-color: #f0f0f0;
+}
+
+.remember [type="checkbox"]:checked + label:before {
+  background-color: #6751f0;
+  background-size: 0.75em;
+  color: rgba(0, 0, 0, 0.075);
+}
+
+.remember [type="checkbox"]:checked:enabled:active + label:before,
+.remember [type="checkbox"]:checked:enabled + label:active:before {
+  background-color: #6956e5;
+  color: rgba(0, 0, 0, 0.275);
+}
+
+.remember [type="checkbox"]:focus + label:before {
+  box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em transparent inset,
+    0 0 0 0.07em rgba(0, 0, 0, 0.1) inset, 0 0 0 3.3px rgb(105, 86, 229, 0.55),
+    0 0 0 5px rgba(105, 86, 229, 0.3);
+}
+
+.remember [type="checkbox"]:focus:active + label:before,
+.remember [type="checkbox"]:focus + label:active:before {
+  box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em transparent inset,
+    0 0 0 0.07em rgba(0, 0, 0, 0.1) inset, 0 0 0 3.3px rgba(105, 86, 229, 0.55),
+    0 0 0 5px rgba(105, 86, 229, 0.3);
+}
+
+.remember [type="checkbox"]:disabled + label:before {
+  opacity: 0.5;
+}
+
+.remember-text {
+  position: relative;
+  font-family: Inter;
+  font-size: 14px;
+  line-height: 21px;
+  margin-left: 1px;
+}
+
+.recover-password {
+  text-align: right;
+}
+.recover-password a {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: #6956e5;
+}
+
+.auth_submit_button {
+  display: block;
+  height: 48px;
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #8f84cf;
+  color: #ffffff;
+  margin-top: 7px;
+}
+
+.no-account {
+  margin-top: 32px;
+  font-family: Inter;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: #313131;
+}
+.no-account a {
+  color: #6956e5;
+}
