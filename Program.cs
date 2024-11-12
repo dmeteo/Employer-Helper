@@ -25,6 +25,8 @@ public class Program
 		app.UseAuthentication();
 		app.UseAuthorization();
 
+		app.UseStaticFiles();
+
 		app.UseSwagger();
 		app.UseSwaggerUI();
 

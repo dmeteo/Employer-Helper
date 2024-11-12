@@ -64,17 +64,18 @@ public class AuthController : Controller
 
 			var viewModel = new AuthorizationViewModel
 			{
-				Email = command.Email,
+				UserName = command.UserName,
 				Password = command.Password,
 			};
 
 			return View(viewModel);
 		}
-		return RedirectToAction("");
+		return RedirectToAction("UserProfile", "Profile");
 	}
 
 	[HttpGet("login")]
 	public IActionResult Login()
+	
 	{
 		return View(new AuthorizationViewModel());
 	}

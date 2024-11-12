@@ -5,10 +5,10 @@
         <div class="inner-container">
             <h1>Авторизация</h1>
             <p class="enter-info">Войдите, чтобы продолжить</p>
-            <form asp-action="Authorization" asp-controller="Auth" method="post">
+            <form asp-action="Login" asp-controller="Auth" method="post">
                 <div class="input-container">
                     <label class="input-info" for="email-input">Почта</label>
-                    <input id='email-input' asp-for="@Model.Email" type="text" name="email" required>
+                    <input id='email-input' asp-for="@Model.UserName" type="text" name="UserName" required>
                 </div>
 
                 <div class="input-container">

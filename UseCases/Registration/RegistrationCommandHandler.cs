@@ -16,14 +16,14 @@ public class RegistrationCommandHandler : IRequestHandler<RegistrationCommand, U
 
 	public async Task<Unit> Handle(RegistrationCommand request, CancellationToken cancellationToken)
 	{
-		if (userManager.Users.Any(u => u.Email == request.Email))
+		if (userManager.Users.Any(u => u.UserName == request.Email))
 		{
 			throw new ValidationException("Such user already exists.");
 		}
 
 		var user = new User
 		{
-			UserName = request.FirstName + request.LastName,	
+			UserName = request.Email,	
 			FirstName = request.FirstName,
 			LastName = request.LastName,
 			Surname = request.Surname,
