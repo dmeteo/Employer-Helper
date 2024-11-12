@@ -6,7 +6,7 @@ profileInfoInputs = document.querySelectorAll('.profile-info-input');
 
 editInfoButton.addEventListener('click', function() {
     for (let i = 0; i < profileInfoInputs.length; i++) {
-        profileInfoInputs[i].disabled = false;
+        profileInfoInputs[i].readonly = false;
     }
     editInfoButton.hidden = true;
     canselInfoButton.hidden = false;
@@ -16,7 +16,7 @@ editInfoButton.addEventListener('click', function() {
 canselInfoButton.addEventListener('click', function() {
     /* Cancel changes */
     for (let i = 0; i < profileInfoInputs.length; i++) {
-        profileInfoInputs[i].disabled = true;
+        profileInfoInputs[i].readonly = true;
     }
     editInfoButton.hidden = false;
     canselInfoButton.hidden = true;
@@ -25,7 +25,7 @@ canselInfoButton.addEventListener('click', function() {
 
 saveInfoButton.addEventListener('click', function() {
     for (let i = 0; i < profileInfoInputs.length; i++) {
-        profileInfoInputs[i].disabled = true;
+        profileInfoInputs[i].readonly = true;
     }
     editInfoButton.hidden = false;
     canselInfoButton.hidden = true;
