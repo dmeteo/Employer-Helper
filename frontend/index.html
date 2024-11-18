@@ -10,7 +10,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/index.css">
     <title>Главная</title>
 </head>
 
@@ -19,6 +19,10 @@
         <a href="./" class="home-link">
             <img src="img/logo.svg" alt="Логотип">
             <h2 hidden>Название</h2>
+        </a>
+        <a href="./" class="nav-link calendar-link">
+            <img src="img/calendar.svg" alt="Календарь">
+            <p hidden>Календарь</p>
         </a>
         <a href="profile.html" class="nav-link profile-link">
             <img src="img/profile.svg" alt="Профиль">
@@ -43,9 +47,11 @@
             </div>
 
             <div class="header-tool-bar">
+                <!--
                 <button class="header-search">
                     <img src="./img/search.svg" alt="Поиск">
                 </button>
+                -->
                 <button class="header-notifications">
                     <img src="./img/bell.svg" alt="Уведомления">
                 </button>
@@ -55,14 +61,57 @@
             </div>
         </header>
 
-        <div class="header-gradient"></div>
-
         <main>
+            <section class="calendar-section">
+                <div class="month-selection-container">
+                    <button class="month-change-button previous-month">
+                        Предыдущий месяц
+                    </button>
+                    <button class="selected-month">
+                        Месяц
+                    </button>
+                    <button class="month-change-button next-month">
+                        Следующий месяц
+                    </button>
+                </div>
+                <div class="calendar-container">
+                    <div class="calendar-grid">
 
+                    </div>
+                </div>
+            </section>
+
+            <section class="tasks-section">
+                <ul class="tasks-list">
+                    <!--
+                    <li class="task-item">
+                        Задача 1
+                    </li>
+                    <li class="task-item">
+                        Задача 2
+                    </li>
+                    -->
+                </ul>
+            </section>
         </main>
     </div>
-    <script src="js/main.js"></script>
-    <script src="./js//aside_bar.js"></script>
+    <template class="day-name-template">
+        <div class="calendar-item calendar-header">
+            <p class="week-day-name">
+                День недели
+            </p>
+        </div>
+    </template>
+    <template class="day-template">
+        <div class="calendar-item calendar-day">
+            <p class="day">
+                Число
+            </p>
+        </div>
+    </template>
+    <script src="./js/aside_bar.js"></script>
+    <script src="./js/calendar.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>

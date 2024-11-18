@@ -120,16 +120,3 @@
   justify-content: space-between;
   gap: 80px;
 }
-
-.change-password-form {
-  width: max-content;
-  padding-top: 25px;
-}
-
-.change-password-item {
-  margin-bottom: 25px;
-}
-
-.change-password-input {
-  margin-top: 5px;
-}

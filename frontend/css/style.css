@@ -36,9 +36,15 @@ h1,
 h2,
 h3,
 h4,
-p {
+p,
+ul,
+li {
   margin: 0;
   padding: 0;
+}
+
+ul {
+  list-style-type: none;
 }
 
 button {
@@ -140,4 +146,5 @@ main {
   height: calc(100% - 136px - 83px);
   width: 100%;
   padding: 40px 99px 0 80px;
+  overflow-y: scroll;
 }
