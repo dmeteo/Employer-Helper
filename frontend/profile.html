@@ -65,43 +65,63 @@
                     <p class="short-profile-email">xxxxxx@gmail.com</p>
                 </div>
             </div>
-            <form class="profile-info">
-                <div class="profile-info-item">
-                    <label class="profile-info-label" for="profile-name-input">Имя</label>
-                    <input id="profile-name-input" class="profile-info-input" type="text" name="name" value="Александр"
-                        readonly>
-                </div>
-                <div class="profile-info-item">
-                    <label class="profile-info-label" for="profile-lastname-input">Фамилия</label>
-                    <input id="profile-lastname-input" class="profile-info-input" type="text" name="lastname"
-                        value="Алесандров" readonly>
-                </div>
-                <div class="profile-info-item">
-                    <label class="profile-info-label" for="profile-middlename-input">Отчество</label>
-                    <input id="profile-middlename-input" class="profile-info-input" type="text" name="middlename"
-                        value="Александрович" readonly>
-                </div>
-                <div class="profile-info-item">
-                    <label class="profile-info-label" for="profile-email-input">Почта</label>
-                    <input id="profile-email-input" class="profile-info-input" type="email" name="email"
-                        value="xxxx@gmail.ru" readonly>
-                </div>
-                <div class="profile-info-item">
-                    <label class="profile-info-label" for="profile-password-input">Пароль</label>
-                    <input id="profile-password-input" class="profile-info-input" type="password" name="password"
-                        value="your_password" disabled>
-                </div>
-                <div class="profile-info-item">
-                    <label class="profile-info-label" for="profile-language-input">Язык</label>
-                    <input id="profile-language-input" class="profile-info-input" type="text" name="language"
-                        value="Русский" readonly>
-                </div>
-                <div class="profile-info-buttons">
-                    <button type="button" class="profile-info-edit-button">Редактировать</button>
-                    <button type="reset" class="profile-info-cansel-button" hidden>Отмена</button>
-                    <button type="submit" class="profile-info-save-button" hidden>Сохранить</button>
-                </div>
-            </form>
+            <div class="profile-forms-container">
+                <form class="profile-info-form">
+                    <div class="profile-inputs-container">
+                        <div class="profile-info-item">
+                            <label class="profile-info-label" for="profile-name-input">Имя</label>
+                            <input id="profile-name-input" class="profile-info-input" type="text" name="name"
+                                value="Александр" readonly required>
+                        </div>
+                        <div class="profile-info-item">
+                            <label class="profile-info-label" for="profile-lastname-input">Фамилия</label>
+                            <input id="profile-lastname-input" class="profile-info-input" type="text" name="lastname"
+                                value="Алесандров" readonly required>
+                        </div>
+                        <div class="profile-info-item">
+                            <label class="profile-info-label" for="profile-middlename-input">Отчество</label>
+                            <input id="profile-middlename-input" class="profile-info-input" type="text"
+                                name="middlename" value="Александрович" readonly>
+                        </div>
+                        <div class="profile-info-item">
+                            <label class="profile-info-label" for="profile-email-input">Почта</label>
+                            <input id="profile-email-input" class="profile-info-input" type="email" name="email"
+                                value="xxxx@gmail.ru" readonly required>
+                        </div>
+                        <!--
+                                            <div class="profile-info-item">
+                                                <label class="profile-info-label" for="profile-password-input">Пароль</label>
+                                                <input id="profile-password-input" class="profile-info-input" type="password" name="password"
+                                                    value="your_password" disabled>
+                                            </div>
+                                            -->
+                        <div class="profile-info-item">
+                            <label class="profile-info-label" for="profile-tel-input">Номер телефона</label>
+                            <input id="profile-tel-input" class="profile-info-input" type="tel" name="phone"
+                                value="+7123456789" readonly required>
+                        </div>
+                        <div class="profile-info-item">
+                            <label class="profile-info-label" for="profile-language-input">Язык</label>
+                            <input id="profile-language-input" class="profile-info-input" type="text" name="language"
+                                value="Русский" list="languages" readonly>
+                            <datalist id="languages">
+                                <option value="-"></option>
+                                <option value="Английский"></option>
+                                <option value="Русский"></option>
+                                <option value="Испанский"></option>
+                                <option value="Французкий"></option>
+                                <option value="Немецкий"></option>
+                                <option value="Другой"></option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="profile-info-buttons">
+                        <button type="button" class="profile-info-edit-button">Редактировать</button>
+                        <button type="reset" class="profile-info-cansel-button" hidden>Отмена</button>
+                        <button type="submit" class="profile-info-save-button" hidden>Сохранить</button>
+                    </div>
+                </form>
+            </div>
         </main>
     </div>
     <script src="./js/profile.js"></script>

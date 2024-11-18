@@ -1,13 +1,15 @@
-profileInfoForm = document.querySelector('.profile-info');
-editInfoButton = document.querySelector('.profile-info-edit-button');
-canselInfoButton = document.querySelector('.profile-info-cansel-button');
-saveInfoButton = document.querySelector('.profile-info-save-button');
-profileInfoInputs = document.querySelectorAll('.profile-info-input');
+const profileInfoForm = document.querySelector('.profile-info-form');
+const editInfoButton = document.querySelector('.profile-info-edit-button');
+const canselInfoButton = document.querySelector('.profile-info-cansel-button');
+const saveInfoButton = document.querySelector('.profile-info-save-button');
+const profileInfoInputs = document.querySelectorAll('.profile-info-input');
 
 editInfoButton.addEventListener('click', function() {
     for (let i = 0; i < profileInfoInputs.length; i++) {
-        profileInfoInputs[i].readonly = false;
+        profileInfoInputs[i].readOnly = false;
     }
+    profileInfoInputs[5].disabled = false;
+
     editInfoButton.hidden = true;
     canselInfoButton.hidden = false;
     saveInfoButton.hidden = false;
@@ -16,22 +18,23 @@ editInfoButton.addEventListener('click', function() {
 canselInfoButton.addEventListener('click', function() {
     /* Cancel changes */
     for (let i = 0; i < profileInfoInputs.length; i++) {
-        profileInfoInputs[i].readonly = true;
+        profileInfoInputs[i].readOnly = true;
     }
-    editInfoButton.hidden = false;
-    canselInfoButton.hidden = true;
-    saveInfoButton.hidden = true;
-});
+    profileInfoInputs[5].disabled = true;
 
-saveInfoButton.addEventListener('click', function() {
-    for (let i = 0; i < profileInfoInputs.length; i++) {
-        profileInfoInputs[i].readonly = true;
-    }
     editInfoButton.hidden = false;
     canselInfoButton.hidden = true;
     saveInfoButton.hidden = true;
 });
 
 profileInfoForm.addEventListener('submit', function(evt) {
-    /* Save changes */
+    for (let i = 0; i < profileInfoInputs.length; i++) {
+        profileInfoInputs[i].readOnly = true;
+    }
+    profileInfoInputs[5].disabled = true;
+    
+    editInfoButton.hidden = false;
+    canselInfoButton.hidden = true;
+    saveInfoButton.hidden = true;
 })
+
