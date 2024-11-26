@@ -3,10 +3,12 @@ const previousMonthButton = document.querySelector('.previous-month');
 const nextMonthButton = document.querySelector('.next-month');
 const calendarGrid = document.querySelector('.calendar-grid');
 
+// Месяц нумеруется с 0
 const tasks = [
-    {name: "1-дневная задача", start: new Date(2024, 10, 17), end: new Date(2024, 10, 17), color: "#e7f6fd"},
-    {name: "Задача в рамках 1-й недели", start: new Date(2024, 10, 19), end: new Date(2024, 10, 22), color: '#ffe8f4'},
-    {name: "Задача на 2 недели", start: new Date(2024, 10, 6), end: new Date(2024, 10, 14), color: '#fef6e7'}
+    {id: 0, name: "1-дневная задача", start: new Date(2024, 10, 17), end: new Date(2024, 10, 17), color: "#e7f6fd", status: "completed"},
+    {id: 1, name: "1-дневная задача 2", start: new Date(2024, 10, 13), end: new Date(2024, 10, 13), color: "#71ff53", status: "completed"},
+    {id: 2, name: "Задача в рамках 1-й недели", start: new Date(2024, 10, 19), end: new Date(2024, 10, 22), color: '#ffe8f4', status: "active"},
+    {id: 3, name: "Задача на 2 недели", start: new Date(2024, 10, 6), end: new Date(2024, 10, 14), color: '#fef6e7', status: "active"}
 ]
 
 function getCalendarDays(year, month) {
@@ -26,6 +28,12 @@ function getCalendarDays(year, month) {
         days.push(new Date(year, month + 1, i));
     }
     return days;
+}
+
+function getDayId(date) {
+    const millisecondsSinceEpoch = date.getTime();
+    const millisecondsInOneDay = 24 * 60 * 60 * 1000;
+    return Math.floor(millisecondsSinceEpoch / millisecondsInOneDay);
 }
 
 function fillCalendar(currentDate) {
@@ -62,25 +70,22 @@ function fillCalendar(currentDate) {
         if (index < 7 && date.getDate() > 20 || index > 20 && date.getDate() < 7) {
             dayElement.classList.add('another-month-day');
         }
-        if (date.getFullYear() === currentDate.getFullYear() && date.getMonth() === currentDate.getMonth() && date.getDate() === currentDate.getDate()) {
+        if (getDayId(date) + 1 === getDayId(new Date(Date.now()))) {
             dayElement.classList.add('current-day');
         }
         // Задачи
         tasks.forEach(task => {
-            if (date.getTime() >= task.start.getTime() && date.getTime() <= task.end.getTime()) {
+
+            if (getDayId(date) >= getDayId(task.start) && getDayId(date) <= getDayId(task.end)) {
                 const taskElement = document.createElement('div');
                 taskElement.classList.add('calendar-task');
                 taskElement.textContent = task.name;
-                
-                // Если у сроков задач добавится время, нужно будет getTime заменить на дату
-                if (date.getTime() === task.start.getTime() || index == 0) {
-                    taskElement.classList.add('calendar-task-start');
-                }
-                if (date.getTime() === task.end.getTime()) {
-                    taskElement.classList.add('calendar-task-end');
-                }
+                taskElement.style.width = `calc(${100 * Math.min(getDayId(task.end) - getDayId(date) + 1, 8 - date.getDay())}% - 4px)`;
                 taskElement.style.backgroundColor = task.color;
                 taskElement.classList.add('task');
+                if (getDayId(date) !== getDayId(task.start) && date.getDay() !== 1) {
+                    taskElement.classList.add('invisible');
+                }
                 dayElement.appendChild(taskElement);
             }
         });
@@ -88,7 +93,6 @@ function fillCalendar(currentDate) {
         weekDaysFragment.appendChild(dayElement);
     });
     calendarGrid.appendChild(weekDaysFragment);
-
 }
     
 
@@ -104,3 +108,39 @@ nextMonthButton.addEventListener('click', function () {
     currentDate.setMonth(currentDate.getMonth() + 1);
     fillCalendar(currentDate);
 });
+
+
+// Список задач
+const tasksListElement = document.querySelector('.tasks-list');
+
+const taskTemplate = document.querySelector('.task-template').content.querySelector('li');
+
+
+function fillTasksList(date) {
+    tasksListElement.innerHTML = '';
+    const tasksFragment = document.createDocumentFragment();
+
+    tasks.forEach(task => {
+
+        if (getDayId(date) >= getDayId(task.start) && getDayId(date) <= getDayId(task.end)) {
+            taskItem = taskTemplate.cloneNode(true);
+            const label = taskItem.querySelector('.task-label');
+            const checkbox = taskItem.querySelector('.task-checkbox');
+            const checkboxId = 'task-' + task.id;
+
+            checkbox.id = checkboxId;
+            label.setAttribute('for', checkboxId)
+            label.textContent = task.name;
+
+            if (task.status === 'completed') {
+                checkbox.checked = true;
+            }
+
+
+            tasksFragment.appendChild(taskItem);
+        }
+    })
+    tasksListElement.appendChild(tasksFragment);
+}
+
+fillTasksList(new Date(2024, 10, 13));
