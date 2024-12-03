@@ -64,7 +64,10 @@
   margin: 0 15px 10px 0;
 }
 
-.add-task-button {
+.add-task-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   align-self: end;
   width: 426px;
   height: 50px;
