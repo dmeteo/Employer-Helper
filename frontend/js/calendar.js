@@ -2,24 +2,26 @@ const selectedMonth = document.querySelector('.selected-month');
 const previousMonthButton = document.querySelector('.previous-month');
 const nextMonthButton = document.querySelector('.next-month');
 const calendarGrid = document.querySelector('.calendar-grid');
+const currentDate = new Date(Date.now());
 
 // Месяц нумеруется с 0
+// start и end включительно
 const tasks = [
-    {id: 0, name: "1-дневная задача", start: new Date(2024, 10, 17), end: new Date(2024, 10, 17), color: "#e7f6fd", status: "completed"},
-    {id: 1, name: "1-дневная задача 2", start: new Date(2024, 10, 13), end: new Date(2024, 10, 13), color: "#71ff53", status: "completed"},
-    {id: 2, name: "Задача в рамках 1-й недели", start: new Date(2024, 10, 19), end: new Date(2024, 10, 22), color: '#ffe8f4', status: "active"},
-    {id: 3, name: "Задача на 2 недели", start: new Date(2024, 10, 6), end: new Date(2024, 10, 14), color: '#fef6e7', status: "active"}
+    {id: 0, name: "1-дневная задача", description: 'Описание 1', start: new Date(2024, 11, 17), end: new Date(2024, 11, 17), color: "#e7f6fd", status: "completed"},
+    {id: 1, name: "1-дневная задача 2", description: 'Описание 2', start: new Date(2024, 11, 17), end: new Date(2024, 11, 17), color: "#71ff53", status: "completed"},
+    {id: 2, name: "Задача в рамках 1-й недели", description: 'Описание 3', start: new Date(2024, 11, 19), end: new Date(2024, 11, 22), color: '#ffe8f4', status: "active"},
+    {id: 3, name: "Задача на 2 недели", description: 'Описание 4', start: new Date(2024, 11, 3), end: new Date(2024, 11, 13), color: '#fef6e7', status: "active"}
 ]
 
 function getCalendarDays(year, month) {
     const days = [];
     const firstDay = new Date(year, month, 1);
     const lastDay = new Date(year, month + 1, 0);
-    const startDayOfWeek = firstDay.getDay() - 1;
+    const startDayOfWeek = (firstDay.getDay() + 6) % 7;
     const endDayOfWeek = lastDay.getDay();
     const lastDateOfPrevMonth = new Date(year, month, 0);
     for (let i = startDayOfWeek; i > 0; i--) {
-        days.push(new Date(lastDateOfPrevMonth.getFullYear(), lastDateOfPrevMonth.getMonth(), lastDateOfPrevMonth.getDate() - i + 1)); // последние дни предыдущего месяца
+        days.push(new Date(lastDateOfPrevMonth.getFullYear(), lastDateOfPrevMonth.getMonth(), lastDateOfPrevMonth.getDate() - i + 1));
     }
     for (let day = 1; day <= lastDay.getDate(); day++) {
         days.push(new Date(year, month, day));
@@ -96,9 +98,6 @@ function fillCalendar(currentDate) {
 }
     
 
-const currentDate = new Date(Date.now());
-fillCalendar(currentDate);
-
 previousMonthButton.addEventListener('click', function () {
     currentDate.setMonth(currentDate.getMonth() - 1);
     fillCalendar(currentDate);
@@ -112,7 +111,6 @@ nextMonthButton.addEventListener('click', function () {
 
 // Список задач
 const tasksListElement = document.querySelector('.tasks-list');
-
 const taskTemplate = document.querySelector('.task-template').content.querySelector('li');
 
 
@@ -143,4 +141,10 @@ function fillTasksList(date) {
     tasksListElement.appendChild(tasksFragment);
 }
 
-fillTasksList(new Date(2024, 10, 13));
+function fill(date=currentDate) {
+    fillCalendar(date);
+    fillTasksList(date);
+}
+
+
+fill();
