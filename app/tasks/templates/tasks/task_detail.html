@@ -1,0 +1,35 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href={% static "css/create-task.css" %}>
+<main>
+    <div class="inputs-grid">
+        <div class="input-container">
+            <label class="new-task-label" for="new-task-name">Название</label>
+            <input type="text" id="new-task-name" name="title" class="new-task-input" autocomplete="off" value="{{task.title}}" readonly autofocus required>
+        </div>
+        <div class="input-container">
+            <label class="new-task-label" for="new-task-start">Дата начала</label>
+            <input type="text" id="new-task-start" name="date_start" class="new-task-input" value="{{task.date_start}}" readonly>
+        </div>
+        <div class="input-container">
+            <label class="new-task-label" for="new-task-end">Дата окончания</label>
+            <input type="text" id="new-task-end" name="deadline" class="new-task-input" value="{{task.deadline}}" readonly>
+        </div>
+        <div class="stub"></div>
+        <div class="input-container">
+            <label class="new-task-label" for="new-task-description">Описание</label>
+            <input id="new-task-description" name="description" class="new-task-textarea" value="{{task.description}}" readonly></input>
+        </div>
+        <div class="input-container requirements-container">
+            <label class="new-task-label" for="new-task-requirements">Требования</label>
+            <input type="text" id="new-task-requirements" name="requirments" class="new-task-textarea" value="{{task.requirments}}" readonly></input>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <a href={% url "users:tasks_for_me" slug=user.slug %} class="back-to-tasks-link">Назад к задачам</a>
+    </div>
+</main>
+
+{% endblock %}

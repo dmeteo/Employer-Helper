@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link type="text/css" href="{% static 'css/style.css' %}" rel="stylesheet">
+    <title>{{ title }}</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <aside class="aside-navbar">
+        <a href={% url "main:index" %} class="home-link">
+            <img src={% static "img/logo.svg" %} alt="Логотип">
+            <h2 hidden>Arbuz</h2>
+        </a>
+        <a href={% url "main:index" %} class="nav-link calendar-link">
+            <img src={% static "img/calendar.svg" %} alt="Календарь">
+            <p hidden>Календарь</p>
+        </a>
+        <a href={% url "users:profile" slug=user.slug %} class="nav-link profile-link">
+            <img src={% static "img/profile.svg"%} alt="Профиль">
+            <p hidden>Профиль</p>
+        </a>
+        <a href={% url "users:tasks_for_me" slug=user.slug%} class="nav-link tasks-link">
+            <img src={% static "img/tasks.svg"%} alt="Задачи">
+            <p hidden>Задачи</p>
+        </a>
+        <a href="chat.html" class="nav-link profile-link">
+            <img src={% static "img/chat.svg" %} alt="Чат">
+            <p hidden>Чат</p>
+        </a>
+    </aside>
+    <div class="contents">
+        <header class="header">
+            <div class="header-left-container">
+                <h1 class="greeting">Добрый день, {{ user.first_name }}</h1>
+                <p class="header-date"></p>
+            </div>
+
+            <div class="header-tool-bar">
+                <button class="header-notifications">
+                    <img src="{% static "img/bell.svg" %}" alt="Уведомления">
+                </button>
+                <a href={% url "users:profile" slug=user.slug %}>
+                <button class="header-user">
+                    <img src={% static "img/user-1.svg" %} alt="Пользователь">
+                </button>
+                </a>
+            </div>
+        </header>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+        </div>
+</body>
+<script src={% static "js/aside_bar.js"%}></script>
+
+</html>

@@ -1,0 +1,66 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href={% static "css/index.css"%}>
+    <main>
+        <section class="calendar-section">
+            <div class="month-selection-container">
+                <button class="month-change-button previous-month">
+                    Предыдущий месяц
+                </button>
+                <button class="selected-month">
+                    Месяц
+                </button>
+                <button class="month-change-button next-month">
+                    Следующий месяц
+                </button>
+            </div>
+            <div class="calendar-container">
+                <div class="calendar-grid">
+
+                </div>
+            </div>
+        </section>
+
+        <div class="tasks-section-container">
+            <div class="tasks-gradient"></div>
+            <section class="tasks-section">
+                <h2 class="tasks-title">
+                    Задачи на день
+                </h2>
+                <ul class="tasks-list">
+
+                </ul>
+            </section>
+        </div>
+    </main>
+    </div>
+
+    <template class="day-name-template">
+    <div class="calendar-item calendar-header">
+        <p class="week-day-name">
+            День недели
+        </p>
+    </div>
+    </template>
+
+    <template class="day-template">
+    <div class="calendar-item calendar-day">
+        <p class="day">
+            Число
+        </p>
+    </div>
+    </template>
+
+    {% for el in task %}
+        <template class="task-template">
+            <li class="task-item">
+                <input class="task-checkbox" type="checkbox" name="title">{{el.title}}
+                <label class="task-label"></label>
+            </li>
+        </template>
+    {% endfor %}
+<script src={% static "js/main.js" %}></script>
+<script src={% static "js/aside_bar.js" %}></script>
+<script src={% static "js/calendar.js" %}></script>
+{% endblock %}

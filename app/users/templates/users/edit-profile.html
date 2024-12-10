@@ -1,0 +1,39 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block content %}
+        <link type="text/css" href="{% static 'css/profile.css' %}" rel="stylesheet">
+
+        <form class="profile-info" action="{% url "users:edit_profile" slug=user.slug %}" method="post">
+            {% csrf_token %}
+            <div class="profile-info-item">
+                <label class="profile-info-label" for="profile-name-input">Имя</label>
+                <input id="profile-name-input" class="profile-info-input" type="text" name="first_name" value={{ form.first_name.value }}>
+            </div>
+            <div class="profile-info-item">
+                <label class="profile-info-label" for="profile-lastname-input">Фамилия</label>
+                <input id="profile-lastname-input" class="profile-info-input" type="text" name="last_name"
+                    value={{ form.last_name.value }}>
+            </div>
+            <div class="profile-info-item">
+                <label class="profile-info-label" for="profile-middlename-input">Отчество</label>
+                <input id="profile-middlename-input" class="profile-info-input" type="text" name="surname"
+                    value={{ form.surname.value }}>
+            </div>
+            <div class="profile-info-item">
+                <label class="profile-info-label" for="profile-email-input">Почта</label>
+                <input id="profile-email-input" class="profile-info-input" type="text" name="email"
+                    value={{ form.email.value }}>
+            </div>
+            <div class="profile-info-item">
+                <label class="profile-info-label" for="profile-language-input">Язык</label>
+                <input id="profile-language-input" class="profile-info-input" type="text" name="language"
+                    value="Русский">
+            </div>
+            <div class="profile-info-buttons">
+                <button type="submit" class="profile-info-save-button">Сохранить</button>
+            </div>
+        </form>
+    </div>
+    <script src={% static "js/profile.js"%}></script>
+
+{% endblock %}
