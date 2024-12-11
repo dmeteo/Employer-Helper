@@ -76,11 +76,9 @@ function fillCalendar(currentDate) {
         while (i < len) {
             let deadline = getDayId(new Date(tasks[i].fields.deadline));
             let date_start = getDayId(new Date(tasks[i].fields.date_start));
-            console.log(len, i)
 
             if (datee >= date_start && datee <= deadline) {
                 const taskElement = document.createElement('div');
-                console.log(tasks[i])
                 taskElement.classList.add('calendar-task');
                 taskElement.textContent = tasks[i].fields.title;
                 taskElement.style.width = `calc(${100 * Math.min(deadline - datee + 1, 8 - date.getDay())}% - 4px)`;
@@ -123,17 +121,17 @@ function fillTasksList(date) {
     let len = tasks.length;
     let i = 0;
     while (i < len) {
-        console.log(tasks[i])
-
         if (getDayId(date) >= getDayId(new Date(tasks[i].fields.date_start)) && getDayId(date) <= getDayId(new Date(tasks[i].fields.deadline))) {
             taskItem = taskTemplate.cloneNode(true);
             const label = taskItem.querySelector('.task-label');
             const checkbox = taskItem.querySelector('.task-checkbox');
+            const link = taskItem.querySelector(".task-link");
             const checkboxId = 'task-' + tasks[i].fields.id;
 
             checkbox.id = checkboxId;
             label.setAttribute('for', checkboxId)
             label.textContent = tasks[i].fields.title;
+            link.href = "/tasks/" + tasks[i].pk;
 
             if (tasks[i].fields.status === "True") {
                 checkbox.checked = true;
