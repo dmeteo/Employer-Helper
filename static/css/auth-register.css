@@ -1,0 +1,161 @@
+body {
+  display: block;
+}
+
+header {
+  margin: 0 54px;
+}
+
+main {
+  height: calc(100% - 77px);
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.inner-container {
+  width: 555px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 2%;
+}
+
+h1 {
+  font-family: Inter;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 48.41px;
+  margin-bottom: 16px;
+  color: #313131;
+}
+.enter-info {
+  font-family: Inter;
+  color: #313131;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 26px;
+}
+
+form {
+  width: 100%;
+}
+
+.input-info {
+  position: absolute;
+  margin-top: -10px;
+  margin-left: 12px;
+  padding: 0 4px;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: left;
+  color: #1c1b1f;
+  background-color: #ffffff;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"] {
+  display: block;
+  height: 56px;
+  width: 100%;
+  margin-bottom: 24px;
+  border: 1px solid #79747e;
+  border-radius: 4px;
+  padding-left: 16px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #1c1b1f;
+}
+
+.register-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 24px;
+}
+
+.password-eye-container {
+  display: flex;
+  justify-content: end;
+}
+
+.password-eye-button {
+  display: inline-block;
+  position: absolute;
+  margin-right: 12px;
+  margin-top: 16px;
+}
+
+.password-eye-button:hover {
+  cursor: pointer;
+}
+
+.password-eye-button.open .open-eye-img,
+.password-eye-button .closed-eye-img {
+  display: block;
+}
+
+.password-eye-button .open-eye-img,
+.password-eye-button.open .closed-eye-img {
+  display: none;
+}
+
+.remember-recover-password-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-top: 39px;
+}
+
+.remember-text {
+  position: relative;
+  font-family: Inter;
+  font-size: 14px;
+  line-height: 21px;
+  margin-left: 1px;
+}
+
+.recover-password {
+  text-align: right;
+}
+.recover-password a {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: #6956e5;
+}
+
+.auth_submit_button {
+  display: block;
+  height: 48px;
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #8f84cf;
+  color: #ffffff;
+  margin-top: 7px;
+}
+
+.no-account {
+  margin-top: 32px;
+  font-family: Inter;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: #313131;
+}
+.no-account a {
+  color: #6956e5;
+}

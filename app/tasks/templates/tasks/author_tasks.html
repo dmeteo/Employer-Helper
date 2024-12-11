@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    {% for task in author_tasks %}
+        <h3>{{ task.author }}</h3>
+        <p>{{ task.worker }}</p>
+
+    {% endfor %}
+{% endblock %}
