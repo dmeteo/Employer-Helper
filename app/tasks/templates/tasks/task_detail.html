@@ -30,6 +30,10 @@
     <div class="button-container">
         <a href={% url "users:tasks_for_me" slug=user.slug %} class="back-to-tasks-link">Назад к задачам</a>
     </div>
+    
+    {% if user.id == task.author.id %}
+        <a href={% url "tasks:delete-task" task.id %}>Удалить задачу</a>
+    {%endif%}
 </main>
 
 {% endblock %}

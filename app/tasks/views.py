@@ -56,3 +56,9 @@ def edit_task(request, id):
         'task': task,
     }
     return render(request, 'tasks/edit-task.html', context)
+
+
+def delete_task(request, id):
+    task = Task.objects.filter(id=id)
+    task.delete()
+    return redirect(reverse('main:index'))
