@@ -15,6 +15,7 @@ function fillTasks(tasks) {
         taskElement.querySelector('.task-description').textContent = tasks[i].fields.description;
         taskElement.querySelector('.task-end-date span').textContent = tasks[i].fields.deadline;
         taskElement.querySelector('.task-link').href = "/tasks/" + tasks[i].pk;
+        taskElement.style.backgroundColor = "#ccc5f9";
         tasksFragment.appendChild(taskElement);
         i++;
     };

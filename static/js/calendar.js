@@ -60,31 +60,39 @@ function fillCalendar(currentDate) {
     getCalendarDays(currentDate.getFullYear(), currentDate.getMonth()).forEach(function (date, index) {
         const dayElement = weekDayTemplate.cloneNode(true);
         dayElement.querySelector('.day').textContent = date.getDate();
+        let datee = getDayId(date);
         if (date.getDay() in [0, 6]) {
             dayElement.classList.add('weekend')
         }
         if (index < 7 && date.getDate() > 20 || index > 20 && date.getDate() < 7) {
             dayElement.classList.add('another-month-day');
         }
-        if (getDayId(date) + 1 === getDayId(new Date(Date.now()))) {
+        if (datee + 1 === getDayId(new Date(Date.now()))) {
             dayElement.classList.add('current-day');
         }
         // Задачи
-        tasks.forEach(task => {
+        let len = tasks.length;
+        let i = 0;
+        while (i < len) {
+            let deadline = getDayId(new Date(tasks[i].fields.deadline));
+            let date_start = getDayId(new Date(tasks[i].fields.date_start));
+            console.log(len, i)
 
-            if (getDayId(date) >= getDayId(task.date_start) && getDayId(date) <= getDayId(task.deadline)) {
+            if (datee >= date_start && datee <= deadline) {
                 const taskElement = document.createElement('div');
+                console.log(tasks[i])
                 taskElement.classList.add('calendar-task');
-                taskElement.textContent = task.title;
-                taskElement.style.width = `calc(${100 * Math.min(getDayId(task.deadline) - getDayId(date) + 1, 8 - date.getDay())}% - 4px)`;
-                taskElement.style.backgroundColor = task.color;
+                taskElement.textContent = tasks[i].fields.title;
+                taskElement.style.width = `calc(${100 * Math.min(deadline - datee + 1, 8 - date.getDay())}% - 4px)`;
+                taskElement.style.backgroundColor = "#ccc5f9";
                 taskElement.classList.add('task');
-                if (getDayId(date) !== getDayId(task.date_start) && date.getDay() !== 1) {
+                if (datee !== date_start && date.getDay() !== 1) {
                     taskElement.classList.add('invisible');
                 }
                 dayElement.appendChild(taskElement);
             }
-        });
+            i++;
+        };
 
         weekDaysFragment.appendChild(dayElement);
     });
@@ -112,26 +120,30 @@ function fillTasksList(date) {
     tasksListElement.innerHTML = '';
     const tasksFragment = document.createDocumentFragment();
 
-    tasks.forEach(task => {
+    let len = tasks.length;
+    let i = 0;
+    while (i < len) {
+        console.log(tasks[i])
 
-        if (getDayId(date) >= getDayId(task.date_start) && getDayId(date) <= getDayId(task.deadline)) {
+        if (getDayId(date) >= getDayId(new Date(tasks[i].fields.date_start)) && getDayId(date) <= getDayId(new Date(tasks[i].fields.deadline))) {
             taskItem = taskTemplate.cloneNode(true);
             const label = taskItem.querySelector('.task-label');
             const checkbox = taskItem.querySelector('.task-checkbox');
-            const checkboxId = 'task-' + task.id;
+            const checkboxId = 'task-' + tasks[i].fields.id;
 
             checkbox.id = checkboxId;
             label.setAttribute('for', checkboxId)
-            label.textContent = task.name;
+            label.textContent = tasks[i].fields.title;
 
-            if (task.status === 1) {
+            if (tasks[i].fields.status === "True") {
                 checkbox.checked = true;
             }
 
 
             tasksFragment.appendChild(taskItem);
         }
-    })
+        i++;
+    }
     tasksListElement.appendChild(tasksFragment);
 }
 
