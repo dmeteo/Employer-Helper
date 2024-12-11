@@ -1,13 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
-from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView, UpdateView
-from django.core.serializers.json import DjangoJSONEncoder
-import json
+from django.core import serializers
 
 from app.tasks.models import Task
 from app.users.models import User
@@ -119,8 +115,7 @@ def tasks_for_me(request, slug):
     user = User.objects.get(slug=slug)
     
     context = {
-        'title': 'Задачи для вас',
-        'tasks_for_me': Task.objects.filter(worker=user),
+        'tasks': serializers.serialize('json', list(Task.objects.filter(worker=user))),
         'slug': slug
     }
 

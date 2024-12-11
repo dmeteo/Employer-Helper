@@ -52,14 +52,14 @@
     </div>
     </template>
 
-    {% for el in task %}
-        <template class="task-template">
-            <li class="task-item">
-                <input class="task-checkbox" type="checkbox" name="title">{{el.title}}
-                <label class="task-label"></label>
-            </li>
-        </template>
-    {% endfor %}
+    {{ tasks|json_script:"tasks"}}
+
+    <template class="task-template">
+        <li class="task-item">
+            <input class="task-checkbox" type="checkbox" name="task-name">
+            <label class="task-label"></label>
+        </li>
+    </template>
 <script src={% static "js/main.js" %}></script>
 <script src={% static "js/aside_bar.js" %}></script>
 <script src={% static "js/calendar.js" %}></script>

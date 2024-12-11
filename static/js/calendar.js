@@ -4,11 +4,33 @@ const nextMonthButton = document.querySelector('.next-month');
 const calendarGrid = document.querySelector('.calendar-grid');
 const currentDate = new Date(Date.now());
 
-// Месяц нумеруется с 0
-// start и end включительно
-const tasks = []
+const tasks = JSON.parse(JSON.parse(document.getElementById('tasks').textContent));
+console.log(tasks)
 
+function getCalendarDays(year, month) {
+    const days = [];
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const startDayOfWeek = (firstDay.getDay() + 6) % 7;
+    const endDayOfWeek = lastDay.getDay();
+    const lastDateOfPrevMonth = new Date(year, month, 0);
+    for (let i = startDayOfWeek; i > 0; i--) {
+        days.push(new Date(lastDateOfPrevMonth.getFullYear(), lastDateOfPrevMonth.getMonth(), lastDateOfPrevMonth.getDate() - i + 1));
+    }
+    for (let day = 1; day <= lastDay.getDate(); day++) {
+        days.push(new Date(year, month, day));
+    }
+    for (let i = 1; days.length % 7 !== 0; i++) {
+        days.push(new Date(year, month + 1, i));
+    }
+    return days;
+}
 
+function getDayId(date) {
+    const millisecondsSinceEpoch = date.getTime();
+    const millisecondsInOneDay = 24 * 60 * 60 * 1000;
+    return Math.floor(millisecondsSinceEpoch / millisecondsInOneDay);
+}
 
 function fillCalendar(currentDate) {
     // Дни недели
@@ -48,6 +70,21 @@ function fillCalendar(currentDate) {
             dayElement.classList.add('current-day');
         }
         // Задачи
+        tasks.forEach(task => {
+
+            if (getDayId(date) >= getDayId(task.date_start) && getDayId(date) <= getDayId(task.deadline)) {
+                const taskElement = document.createElement('div');
+                taskElement.classList.add('calendar-task');
+                taskElement.textContent = task.title;
+                taskElement.style.width = `calc(${100 * Math.min(getDayId(task.deadline) - getDayId(date) + 1, 8 - date.getDay())}% - 4px)`;
+                taskElement.style.backgroundColor = task.color;
+                taskElement.classList.add('task');
+                if (getDayId(date) !== getDayId(task.date_start) && date.getDay() !== 1) {
+                    taskElement.classList.add('invisible');
+                }
+                dayElement.appendChild(taskElement);
+            }
+        });
 
         weekDaysFragment.appendChild(dayElement);
     });
@@ -77,7 +114,7 @@ function fillTasksList(date) {
 
     tasks.forEach(task => {
 
-        if (getDayId(date) >= getDayId(task.start) && getDayId(date) <= getDayId(task.end)) {
+        if (getDayId(date) >= getDayId(task.date_start) && getDayId(date) <= getDayId(task.deadline)) {
             taskItem = taskTemplate.cloneNode(true);
             const label = taskItem.querySelector('.task-label');
             const checkbox = taskItem.querySelector('.task-checkbox');
@@ -87,7 +124,7 @@ function fillTasksList(date) {
             label.setAttribute('for', checkboxId)
             label.textContent = task.name;
 
-            if (task.status === 'completed') {
+            if (task.status === 1) {
                 checkbox.checked = true;
             }
 

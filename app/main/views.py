@@ -1,9 +1,8 @@
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from django.core import serializers
 
 from app.tasks.models import Task
-
-
 
 
 def index(request):
@@ -13,8 +12,7 @@ def index(request):
     task = Task.objects.filter(worker=request.user)
 
     context = {
-        'title': 'Главная',
-        'task': task
+        'tasks': serializers.serialize('json', task)
     }
 
     return render(request, 'main/index.html', context)
