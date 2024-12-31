@@ -56,7 +56,11 @@
 
     <template class="task-template">
         <li class="task-item">
-            <input class="task-checkbox" type="checkbox" name="task-name">
+            {% if task.status == True %}
+                <input class="task-checkbox" type="checkbox" name="task-name" True>
+            {% else %}
+                <input class="task-checkbox" type="checkbox" name="task-name">
+            {% endif %}
             <label class="task-label"></label></a>
             <a class="task-link">Подробнее</a>
         </li>

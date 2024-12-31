@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор пользователя</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Выберите пользователя</h1>
+
+    <!-- Форма выбора пользователя -->
+    <form method="POST" id="userForm">
+        {% csrf_token %}
+        <label for="userDropdown">Пользователь:</label>
+        <select id="userDropdown" name="user">
+            <option value="">Загрузка...</option>
+        </select>
+        <button type="submit">Выбрать</button>
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <script>
+        $(document).ready(function () {
+            // Загружаем данные пользователей через AJAX
+            $.ajax({
+                url: '/users/',
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    const dropdown = $('#userDropdown');
+                    dropdown.empty(); // Очистить список перед добавлением элементов
+                    dropdown.append('<option value="">Выберите пользователя</option>');
+                    data.forEach(user => {
+                        dropdown.append(`<option value="${user.id}">${user.first_name}</option>`);
+                    });
+                },
+                error: function () {
+                    alert('Не удалось загрузить список пользователей.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

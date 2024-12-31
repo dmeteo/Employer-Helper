@@ -133,7 +133,7 @@ function fillTasksList(date) {
             label.textContent = tasks[i].fields.title;
             link.href = "/tasks/" + tasks[i].pk;
 
-            if (tasks[i].fields.status === "True") {
+            if (tasks[i].fields.status === True) {
                 checkbox.checked = true;
             }
 

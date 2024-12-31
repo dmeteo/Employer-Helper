@@ -33,7 +33,18 @@
     
     {% if user.id == task.author.id %}
         <a href={% url "tasks:delete-task" task.id %}>Удалить задачу</a>
-    {%endif%}
+    {% endif %}
+
+    <form action="{% url 'tasks:complete-task' task.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Завершить задачу</button>
+    </form>
+    
+    {% if task.status == True %}
+        <p>Задача выполнена</p>
+    {% else %}
+        <p>Задача не выполнена</p>
+    {% endif %}
 </main>
 
 {% endblock %}
