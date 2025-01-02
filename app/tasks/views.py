@@ -45,7 +45,7 @@ def edit_task(request, id):
     if request.method == 'POST':
         task_form = TaskForm(data=request.POST, instance=task)
         if task_form.is_valid():
-            task.update()
+            task.save()
             messages.success(request, "Карточка проекта успешно обновлена")
             return HttpResponseRedirect(reverse(f'{request.task.id}'))
     else:
@@ -79,14 +79,14 @@ def is_ajax(request):
 
 def user_list(request):
     if is_ajax(request=request):
-        users = User.objects.values('id', 'first_name', 'last_name', 'surname')
+        users = User.objects.values('id', 'first_name')
         return JsonResponse(list(users), safe=False)
     if request.method == 'POST':
         selected_user_id = request.POST.get('user')
         if selected_user_id:
             try:
                 selected_user = User.objects.get(id=selected_user_id)
-                return render(request, 'users_dropdown.html', {'user': selected_user, 'slug': selected_user.slug})
+                return render(request, 'users/profile.html', {'user': selected_user, 'slug': selected_user.slug})
             except User.DoesNotExist:
-                return render(request, 'user_dropdown.html', {'error': 'Пользователь не найден'})
-    return render(request, 'user_dropdown.html')
+                return render(request, 'tasks/user_dropdown.html', {'error': 'Пользователь не найден'})
+    return render(request, 'tasks/user_dropdown.html')
