@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.db.models import Q
 
 from app.tasks.forms import TaskForm
 from app.tasks.models import Task
@@ -16,7 +17,8 @@ def create_task(request):
         if form.is_valid():
             task = form.save(commit=False)
             task.author = request.user
-            task.worker = request.user
+            worker_id = request.POST.get('worker')
+            task.worker = User.objects.get(id=worker_id)
             task.status = False
             task.save()
             return redirect(reverse('main:index'))
@@ -79,14 +81,18 @@ def is_ajax(request):
 
 def user_list(request):
     if is_ajax(request=request):
-        users = User.objects.values('id', 'first_name')
-        return JsonResponse(list(users), safe=False)
-    if request.method == 'POST':
-        selected_user_id = request.POST.get('user')
-        if selected_user_id:
-            try:
-                selected_user = User.objects.get(id=selected_user_id)
-                return render(request, 'users/profile.html', {'user': selected_user, 'slug': selected_user.slug})
-            except User.DoesNotExist:
-                return render(request, 'tasks/user_dropdown.html', {'error': 'Пользователь не найден'})
-    return render(request, 'tasks/user_dropdown.html')
+        query = request.GET.get('q', '').strip()
+        users = User.objects.filter(
+            Q(first_name__icontains=query) |
+            Q(last_name__icontains=query) |
+            Q(surname__icontains=query)
+        ).values('id', 'first_name', 'last_name', 'surname')[:10]
+
+        results = [
+            {
+                'id': user['id'],
+                'text': f"{user['surname']} {user['first_name']} {user['last_name']}"
+            } for user in users
+        ]
+        return JsonResponse({'results': results}, safe=False)
+    return JsonResponse({'error': 'Invalid request'}, status=400)

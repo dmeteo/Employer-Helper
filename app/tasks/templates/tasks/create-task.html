@@ -2,6 +2,8 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href={% static "css/create-task.css" %}>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <main>
     <form class="create-task-form" action="{% url "tasks:create-task"  %}" method="post">
         {% csrf_token %}
@@ -28,6 +30,12 @@
                 <label class="new-task-label" for="new-task-requirements">Требования</label>
                 <textarea id="new-task-requirements" name="requirments" class="new-task-textarea" value="{% if form.requirments.value %}{{ form.requirments.value }}{% endif %}"></textarea>
             </div>
+
+            <label for="worker">Исполнитель:</label>
+            <select id="worker" name="worker" style="width: 100%">
+                <option value="" disabled selected>Выберите пользователя</option>
+            </select>
+
         </div>
         <div class="button-container">
             <button class="submit-button" type="submit">Создать</button>
@@ -37,5 +45,30 @@
         <a href={% url "users:tasks_for_me" slug=user.slug %} class="back-to-tasks-link">Назад к задачам</a>
     </div>
 </main>
+<script>
+    $(document).ready(function () {
+    $('#worker').select2({
+        ajax: {
+            url: '{% url "tasks:user_list" %}',
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    q: params.term
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data.results
+                };
+            },
+            cache: true
+        },
+        placeholder: 'Начните вводить имя пользователя',
+        minimumInputLength: 1,
+        width: 'resolve'
+    });
+});
+</script>
 
 {% endblock %}
