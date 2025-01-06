@@ -15,3 +15,10 @@ asideNavBar.addEventListener('mouseout', function() {
         navLink.querySelector('p').hidden = true;
     })
 });
+
+
+const dateElement = document.querySelector('.header-date');
+if (dateElement != null) {
+    const currentDate = new Date();
+    dateElement.textContent = currentDate.toLocaleDateString();
+}

@@ -14,6 +14,11 @@ employees.forEach(employee => {
         const employeeElement = employeeTemplate.cloneNode(true);
         employeeElement.querySelector('.employee-name').textContent = employee.name;
         employeeElement.querySelector('.employee-info').textContent = employee.info;
+
+        employeeElement.addEventListener('click', () => {
+            // TODO: Переход на страницу со стажером
+        });
+
         employeesFragment.appendChild(employeeElement);
     }
 });
