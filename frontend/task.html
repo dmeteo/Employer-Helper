@@ -10,7 +10,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/tasks.css">
+    <link rel="stylesheet" href="css/task.css">
     <title>Профиль</title>
 </head>
 
@@ -56,31 +56,37 @@
         </header>
 
         <div class="header-gradient">
-            <span class="page-name">Задачи</span>
+            <div class="page-name">Задача </div>
+            <div class="task-name">[название]</div>
         </div>
 
         <main>
-            <ul class="tasks-list"></ul>
-            <a href="./create-task.html" class="add-task-link">Добавить задачу</a>
+            <div class="task-info">
+                <div class="task-1st-group">
+                    <div class="task-deadline">
+                        <div class="deadline-label"><span>Выполнить до</span></div>
+                        <div class="deadline-value">[вчера]</div>
+                    </div>
+                    <div class="task-description">
+                        Описание: <br><br>
+                    </div>
+                    <button class="edit-task-button">Редактировать задачу</button>
+                </div>
+                <div class="task-2nd-group">
+                    <div class="task-files-requires">
+                        Необходимые файлы: <br><br>
+                    </div>
+                    <div class="buttons-group">
+                        <button class="task-action-button add-file-button">Прикрепить файлы</button>
+                        <button class="task-action-button complete-task-button">Отметить выполненной</button>
+                        <button class="task-action-button remove-task-button">Удалить задачу</button>
+                    </div>
+                    <div class="plug-under-buttons"></div>
+                </div>
+            </div>
         </main>
 
-        <template class="task-template">
-            <li class="task-item">
-                <div class="task-left-container">
-                    <h3 class="task-name">Название</h3>
-                    <p class="task-description">Описание</p>
-                </div>
-                <div class="task-right-container">
-                    <p class="task-end-date">До <span>свидания</span></p>
-                    <!--
-                        TODO: Добавить ссылку
-                    -->
-                    <a class="task-link" href="#">Подробнее</a>
-                </div>
-            </li>
-        </template>
-
-        <script src="./js/tasks.js"></script>
+        <script src="./js/task.js"></script>
         <script src="./js/aside-bar.js"></script>
 </body>
 

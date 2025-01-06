@@ -7,10 +7,10 @@ const currentDate = new Date(Date.now());
 // Месяц нумеруется с 0
 // start и end включительно
 const tasks = [
-    {id: 0, name: "1-дневная задача", description: 'Описание 1', start: new Date(2024, 11, 17), end: new Date(2024, 11, 17), color: "#e7f6fd", status: "completed"},
-    {id: 1, name: "1-дневная задача 2", description: 'Описание 2', start: new Date(2024, 11, 17), end: new Date(2024, 11, 17), color: "#71ff53", status: "completed"},
-    {id: 2, name: "Задача в рамках 1-й недели", description: 'Описание 3', start: new Date(2024, 11, 19), end: new Date(2024, 11, 22), color: '#ffe8f4', status: "active"},
-    {id: 3, name: "Задача на 2 недели", description: 'Описание 4', start: new Date(2024, 11, 3), end: new Date(2024, 11, 13), color: '#fef6e7', status: "active"}
+    {id: 0, name: "1-дневная задача", description: 'Описание 1', start: new Date(2025, 0, 17), end: new Date(2025, 0, 17), color: "#e7f6fd", status: "completed"},
+    {id: 1, name: "1-дневная задача 2", description: 'Описание 2', start: new Date(2025, 0, 17), end: new Date(2025, 0, 17), color: "#71ff53", status: "completed"},
+    {id: 2, name: "Задача в рамках 1-й недели", description: 'Описание 3', start: new Date(2025, 0, 19), end: new Date(2025, 0, 22), color: '#ffe8f4', status: "active"},
+    {id: 3, name: "Задача на 2 недели", description: 'Описание 4', start: new Date(2025, 0, 3), end: new Date(2025, 0, 13), color: '#fef6e7', status: "active"}
 ]
 
 function getCalendarDays(year, month) {
@@ -79,15 +79,18 @@ function fillCalendar(currentDate) {
         tasks.forEach(task => {
 
             if (getDayId(date) >= getDayId(task.start) && getDayId(date) <= getDayId(task.end)) {
-                const taskElement = document.createElement('div');
+                const taskElement = document.createElement('a');
                 taskElement.classList.add('calendar-task');
                 taskElement.textContent = task.name;
-                taskElement.style.width = `calc(${100 * Math.min(getDayId(task.end) - getDayId(date) + 1, 8 - date.getDay())}% - 4px)`;
+                taskElement.style.width = `calc(${100 * Math.min(getDayId(task.end) - getDayId(date) + 1, (7 - date.getDay()) % 7 + 1)}% - 4px)`;
                 taskElement.style.backgroundColor = task.color;
                 taskElement.classList.add('task');
                 if (getDayId(date) !== getDayId(task.start) && date.getDay() !== 1) {
                     taskElement.classList.add('invisible');
                 }
+
+                taskElement.href = `#`; // TODO: Указать ссылку
+
                 dayElement.appendChild(taskElement);
             }
         });
