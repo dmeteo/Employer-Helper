@@ -10,8 +10,8 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/tasks.css">
-    <title>Профиль</title>
+    <link rel="stylesheet" href="css/employees.css">
+    <title>Мои стажеры</title>
 </head>
 
 <body>
@@ -56,28 +56,26 @@
         </header>
 
         <div class="header-gradient">
-            <span class="page-name">Задачи</span>
+            <span class="page-name">Мои стажеры</span>
         </div>
 
         <main>
-            <ul class="tasks-list"></ul>
-            <a href="./create-task.html" class="add-task-link">Добавить задачу</a>
+            <ul class="employees-list"></ul>
         </main>
 
-        <template class="task-template">
-            <li class="task-item">
-                <div class="task-left-container">
-                    <h3 class="task-name">Название</h3>
-                    <p class="task-description">Описание</p>
+        <template class="employee-template">
+            <li class="employee">
+                <div class="employee-left-container">
+                    <img src="./img/user-1.svg">
                 </div>
-                <div class="task-right-container">
-                    <p class="task-end-date">До <span></span></p>
-                    <a class="task-link" href="#">Подробнее</a>
+                <div class="employee-right-container">
+                    <h3 class="employee-name">[Имя стажера]</h3>
+                    <p class="employee-info">[Подробнее]</p>
                 </div>
             </li>
         </template>
 
-        <script src="./js/tasks.js"></script>
+        <script src="./js/my-employees.js"></script>
         <script src="./js/aside-bar.js"></script>
 </body>
 

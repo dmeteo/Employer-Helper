@@ -17,6 +17,8 @@ function fillTasks(tasks) {
         taskElement.querySelector('.task-name').textContent = task.name;
         taskElement.querySelector('.task-description').textContent = task.description;
         taskElement.querySelector('.task-end-date span').textContent = task.end.toLocaleDateString();
+        
+        // TODO: Добавить ссылку
         taskElement.querySelector('.task-link').href = '#'
         taskElement.style.backgroundColor = task.color;
         tasksFragment.appendChild(taskElement);

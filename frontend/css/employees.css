@@ -1,0 +1,47 @@
+.employees-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px 40px;
+}
+
+.employee {
+  width: calc(50% - 54px / 2);
+  display: flex;
+  background: rgba(245, 245, 245, 1);
+  border-radius: 10px;
+  padding: 11px 21px;
+  gap: 31px;
+}
+
+.employee-right-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 5px;
+}
+
+.employee-name {
+  font-family: Inter;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.employee-info {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.link-employee-button {
+  border: 1px solid rgba(135, 135, 135, 1);
+  border-radius: 12px;
+  height: 33px;
+  padding-left: 33.5px;
+  padding-right: 33.5px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(29, 0, 36, 1);
+  margin-left: auto;
+  align-self: center;
+}
