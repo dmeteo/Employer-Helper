@@ -27,7 +27,7 @@ const taskEnd = document.querySelector('.deadline-value');
 taskEnd.innerHTML = task.end.toLocaleDateString();
 
 const taskDescription = document.querySelector('.task-description');
-taskDescription.insertAdjacentHTML('beforeend', task.description);
+taskDescription.insertAdjacentHTML('beforeend', task.description.replace(/\n/g, '<br>', ));
 
 const filesRequires = document.querySelector('.task-files-requires');
-filesRequires.insertAdjacentHTML('beforeend', task.filesRequires);
+filesRequires.insertAdjacentHTML('beforeend', task.filesRequires.replace(/\n/g, '<br>', ));
