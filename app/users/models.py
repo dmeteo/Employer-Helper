@@ -32,6 +32,14 @@ class User(AbstractUser):
     role = models.ForeignKey(Role, 
                              on_delete=models.CASCADE,
                              null=True)
+    manager = models.ForeignKey(
+        'self', 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True,
+        related_name="subordinates",  # получить всех стажеров
+        verbose_name="Руководитель"
+    )
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

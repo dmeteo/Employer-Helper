@@ -125,20 +125,28 @@ def tasks_for_me(request, slug):
     return render(request, 'tasks/tasks_for_me.html', context)
 
 
-# def students_list(request):
-#     users = User.objects.filter(level=1)
+def add_intern(request, id):
+    intern = User.objects.filter(id=id)
+    intern.manager = request.user
+    intern.save()
+
+
+# def interns_list(request):
+#     interns = User.objects.filter(level=1)
     
 #     context = {
-#         "users": users
+#         "interns": interns
 #     }
 
-#     return render(request, 'users/students_list', context)
+#     return render(request, 'users/interns_list', context)
 
 
-# def my_students_list(request):
+# def my_interns_list(request):
+#     manager = User.objects.get(id=request.id)
+#     interns = manager.subordinates.all()
     
 #     context = {
-#         "users": users
+#         "interns": interns
 #     }
 
-#     return render(request, 'users/students_list')
+#     return render(request, 'users/interns_list', context)
