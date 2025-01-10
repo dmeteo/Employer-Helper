@@ -96,6 +96,7 @@ p.day {
 }
 
 .calendar-task {
+  display: block;
   width: 100%;
   font-family: Inter;
   font-size: 12px;
@@ -106,6 +107,7 @@ p.day {
   border-left: rgb(147, 133, 233) solid 4px;
   border-radius: 4px;
   color: black;
+  cursor: pointer;
 }
 
 .calendar-task.invisible {

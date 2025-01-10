@@ -20,5 +20,6 @@ class TaskForm(forms.ModelForm):
     title = forms.CharField()
     description = forms.CharField()
     requirments = forms.CharField()
+
         
     

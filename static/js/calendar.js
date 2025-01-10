@@ -5,7 +5,6 @@ const calendarGrid = document.querySelector('.calendar-grid');
 const currentDate = new Date(Date.now());
 
 const tasks = JSON.parse(JSON.parse(document.getElementById('tasks').textContent));
-console.log(tasks)
 
 function getCalendarDays(year, month) {
     const days = [];

@@ -11,3 +11,4 @@ sqlparse==0.5.2
 transliterate==1.10.2
 tzdata==2024.2
 Wrapper==1.1.0b1
+channels==4.2.0

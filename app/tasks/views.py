@@ -92,6 +92,27 @@ def complete_task(request, id):
         return redirect(reverse('main:index'))
     return redirect(reverse('main:index'))
 
+# Задачи для ревью(для ментора)
+
+# def tasks_for_review(request):
+#     if request.role.level > 1:
+#         tasks = Task.objects.filter(author=request.user) & Task.objects.filter(status__level=2)
+        
+#         return render(request, 'tasks/tasks_for_review', {"tasks": tasks})
+#     else:
+#         return redirect(reverse('main:index'))
+
+
+# Отправить задачу на ревью
+
+# def submit_for_review(request, id):
+#     if request.method == "POST":
+#         task = get_object_or_404(Task, id=id)
+#         task.status.level = 2
+#         task.save()
+#         return redirect(reverse('users:tasks_for_me'))
+
+
 
 def is_ajax(request):
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'

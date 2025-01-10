@@ -124,21 +124,21 @@ def tasks_for_me(request, slug):
 
     return render(request, 'tasks/tasks_for_me.html', context)
 
-
+@login_required
 def add_intern(request, id):
     intern = User.objects.filter(id=id)
     intern.manager = request.user
     intern.save()
 
-
-# def interns_list(request):
-#     interns = User.objects.filter(level=1)
+@login_required
+def interns_list(request):
+    interns = User.objects.filter(role__level=1)
     
-#     context = {
-#         "interns": interns
-#     }
+    context = {
+        "interns": interns
+    }
 
-#     return render(request, 'users/interns_list', context)
+    return render(request, 'users/all-interns.html', context)
 
 
 # def my_interns_list(request):

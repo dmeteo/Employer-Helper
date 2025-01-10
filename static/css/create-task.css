@@ -1,5 +1,7 @@
 .create-task-form {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
   grid-template-rows: 1fr auto auto;
   height: 100%;
   padding-bottom: 50px;
@@ -11,6 +13,7 @@
   grid-template-rows: 55px 1fr;
   gap: 52px 33px;
   width: 100%;
+  flex-grow: 1;
 }
 
 .input-container {
@@ -57,14 +60,30 @@
   grid-column: span 3;
 }
 
-.button-container {
-  width: 100%;
+.buttons-container {
+  align-self: flex-end;
+  width: calc(67% - 33px);
   display: flex;
   justify-content: flex-end;
+  gap: 45px;
+}
+
+.choose-employee-button {
+  flex: 1;
+  height: 60px;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  background-color: #a399e2;
+  border-radius: 10px;
+  color: white;
+  align-self: flex-end;
+  margin-top: 43px;
 }
 
 .submit-button {
-  width: 615px;
+  flex: 2;
   height: 60px;
   font-family: Inter;
   font-size: 20px;
@@ -85,4 +104,5 @@
   color: #333333;
   align-self: flex-end;
   margin-top: 5px;
+  align-self: flex-end;
 }
