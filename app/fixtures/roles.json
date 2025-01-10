@@ -1,0 +1,18 @@
+[
+    {
+        "model": "users.role",
+        "pk": 1,
+        "fields": {
+            "name": "Стажер",
+            "level": 1
+        }
+    },
+    {
+        "model": "users.role",
+        "pk": 2,
+        "fields": {
+            "name": "Ментор",
+            "level": 2
+        }
+    }
+]

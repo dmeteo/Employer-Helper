@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from django.core import serializers
 
 from app.tasks.models import Task
-from app.users.models import User
+from app.users.models import Role, User
 from app.users.forms import UserLoginForm, UserSignUpForm, UserForm
 
 def login(request):
@@ -37,7 +37,10 @@ def signup(request):
     elif request.method == 'POST':
         form = UserSignUpForm(data=request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)
+            user.role = Role.objects.get(id=1)
+            user.save()
+
             user = form.instance
 
             messages.success(request, f"{user.email}, Вы успешно зарегистрированы и вошли в аккаунт")
@@ -120,3 +123,22 @@ def tasks_for_me(request, slug):
     }
 
     return render(request, 'tasks/tasks_for_me.html', context)
+
+
+# def students_list(request):
+#     users = User.objects.filter(level=1)
+    
+#     context = {
+#         "users": users
+#     }
+
+#     return render(request, 'users/students_list', context)
+
+
+# def my_students_list(request):
+    
+#     context = {
+#         "users": users
+#     }
+
+#     return render(request, 'users/students_list')
