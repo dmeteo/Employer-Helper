@@ -13,15 +13,10 @@ from app.users.models import User
 
 def create_task(request):
     if request.method == "POST":
-        form = TaskForm(request.POST or None)
-        if form.is_valid():
-            task = form.save(commit=False)
-            task.author = request.user
-            worker_id = request.POST.get('worker')
-            task.worker = User.objects.get(id=worker_id)
-            task.status = False
-            task.save()
-            return redirect(reverse('main:index'))
+        if request.user.role.level > 1:
+            create_task_for_other(request=request)
+        else:
+            create_task_for_me(request=request)
     else:
         form = TaskForm()
     
@@ -29,7 +24,30 @@ def create_task(request):
         'title': "Создание задачи",
         'form': form,
     }
-    return render(request, 'tasks/create-task.html', context) 
+    return render(request, 'tasks/create-task.html', context)
+
+
+def create_task_for_other(request):
+    form = TaskForm(request.POST or None)
+    if form.is_valid():
+        task = form.save(commit=False)
+        task.author = request.user
+        worker_id = request.POST.get('worker')
+        task.worker = User.objects.get(id=worker_id)
+        task.status = False
+        task.save()
+        return redirect(reverse('main:index'))
+
+
+def create_task_for_me(request):
+    form = TaskForm(request.POST or None)
+    if form.is_valid():
+        task = form.save(commit=False)
+        task.author = request.user
+        task.worker = request.user
+        task.status = False
+        task.save()
+        return redirect(reverse('main:index'))
 
 
 def task_detail(request, pk):
@@ -73,6 +91,27 @@ def complete_task(request, id):
         task.save()
         return redirect(reverse('main:index'))
     return redirect(reverse('main:index'))
+
+# Задачи для ревью(для ментора)
+
+# def tasks_for_review(request):
+#     if request.role.level > 1:
+#         tasks = Task.objects.filter(author=request.user) & Task.objects.filter(status__level=2)
+        
+#         return render(request, 'tasks/tasks_for_review', {"tasks": tasks})
+#     else:
+#         return redirect(reverse('main:index'))
+
+
+# Отправить задачу на ревью
+
+# def submit_for_review(request, id):
+#     if request.method == "POST":
+#         task = get_object_or_404(Task, id=id)
+#         task.status.level = 2
+#         task.save()
+#         return redirect(reverse('users:tasks_for_me'))
+
 
 
 def is_ajax(request):

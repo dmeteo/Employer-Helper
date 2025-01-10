@@ -160,6 +160,10 @@ body {
   color: #7d7d7f;
 }
 
+.header-task-name {
+  margin-left: 20px;
+}
+
 main {
   display: flex;
   flex-direction: column;

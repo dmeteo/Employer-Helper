@@ -1,0 +1,18 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block content %}
+<main>
+    <ul class="employees-list"></ul>
+</main>
+
+<template class="employee-template">
+    <li class="employee">
+        <div class="employee-left-container">
+            <img src="./img/user-1.svg">
+        </div>
+        <div class="employee-right-container">
+            <h3 class="employee-name">[Имя стажера]</h3>
+            <p class="employee-info">[Подробнее]</p>
+        </div>
+    </li>
+</template>
