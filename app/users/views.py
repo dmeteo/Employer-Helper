@@ -1,9 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
 from django.core import serializers
+from django.db.models import Q
 
 from app.tasks.models import Task
 from app.users.models import Role, User
@@ -127,10 +129,13 @@ def tasks_for_me(request, slug):
 
 @login_required
 def add_intern(request, id):
-    intern = User.objects.filter(id=id)
-    intern.manager = request.user
-    intern.save()
-    return redirect(reverse('users:interns_list'))
+    if request.method == 'POST' and request.user.role.level > 1:
+        intern = User.objects.get(id=id)
+        if intern.role.level == 1 and intern.manager is None: 
+            intern.manager = request.user
+            intern.save()
+            return JsonResponse({"status": "success"})
+    return JsonResponse({"status": "error"}, status=400)
 
 
 @login_required
@@ -142,6 +147,29 @@ def interns_list(request):
     }
 
     return render(request, 'users/all-interns.html', context)
+
+
+def search_interns(request):
+    query = request.GET.get('q', '').strip() 
+    interns = User.objects.filter(
+            Q(role__level=1, first_name__icontains=query) |
+            Q(role__level=1, last_name__icontains=query) |
+            Q(role__level=1, surname__icontains=query)
+    )
+
+    results = [
+        {
+            "id": intern.id,
+            "full_name": f"{intern.last_name} {intern.first_name} {intern.surname}",
+            "email": intern.email,
+            "profile_url": reverse('users:profile', kwargs={'slug': intern.slug}),
+            "manager_id": intern.manager.id if intern.manager else None
+        }
+        for intern in interns
+    ]
+
+    return JsonResponse({"results": results})
+
 
 
 # def my_interns_list(request):
