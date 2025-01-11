@@ -43,7 +43,7 @@ def signup(request):
 
             user = form.instance
 
-            messages.success(request, f"{user.email}, Вы успешно зарегистрированы и вошли в аккаунт")
+            messages.success(request, f"{user.email}, Вы успешно зарегистрированы")
             return redirect(reverse('users:login'))
     else:
         form = UserSignUpForm()
@@ -61,7 +61,7 @@ def edit_profile(request, slug):
         form = UserForm(data=request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            messages.success(request, "Профайл успешно обновлен")
+            messages.success(request, "Профиль успешно обновлен")
             return redirect(reverse('users:profile'))
     else:
         form = UserForm(instance=request.user)  
@@ -124,11 +124,14 @@ def tasks_for_me(request, slug):
 
     return render(request, 'tasks/tasks_for_me.html', context)
 
+
 @login_required
 def add_intern(request, id):
     intern = User.objects.filter(id=id)
     intern.manager = request.user
     intern.save()
+    return redirect(reverse('users:interns_list'))
+
 
 @login_required
 def interns_list(request):

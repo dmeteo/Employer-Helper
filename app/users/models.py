@@ -65,3 +65,22 @@ class User(AbstractUser):
 
         self.slug = slug_candidate
         super().save(*args, **kwargs)
+
+
+class InternNote(models.Model):
+    intern = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="intern",
+        null=False)
+    
+    author_note = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="author_note",
+        null=False)
+    
+    note = models.TextField(null=False)
+    
+
+    
