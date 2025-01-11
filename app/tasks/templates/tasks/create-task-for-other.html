@@ -1,0 +1,75 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href={% static "css/create-task.css" %}>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<main>
+    <form class="create-task-form" action="{% url "tasks:create-task-for-other" slug=worker.slug %}" method="post">
+        <h1>Задача для {{ worker.last_name }} {{ worker.first_name }} {{ worker.surname }}</h1>
+        <h1>  .</h1>
+        {% csrf_token %}
+        <div class="inputs-grid">
+            
+            <div class="input-container">
+                <label class="new-task-label" for="new-task-name">Название</label>
+                <input type="text" id="new-task-name" name="title" class="new-task-input" autocomplete="off" value="{% if form.title.value %}{{ form.title.value }}{% endif %}" autofocus required>
+            </div>
+            <div class="input-container">
+                <label class="new-task-label" for="new-task-start">Дата начала</label>
+                <input type="date" id="new-task-start" name="date_start" class="new-task-input" value="{% if form.date_start.value %}{{ form.date_start.value }}{% endif %}">
+            </div>
+            <div class="input-container">
+                <label class="new-task-label" for="new-task-end">Дата окончания</label>
+                <input type="date" id="new-task-end" name="deadline" class="new-task-input" value="{% if form.deadline.value %}{{ form.deadline.value }}{% endif %}">
+            </div>
+            <div class="stub"></div>
+            <div class="input-container">
+                <label class="new-task-label" for="new-task-description">Описание</label>
+                <textarea id="new-task-description" name="description" class="new-task-textarea" value="{% if form.description.value %}{{ form.description.value }}{% endif %}"></textarea>
+            </div>
+            <div class="input-container requirements-container">
+                <label class="new-task-label" for="new-task-requirements">Требования</label>
+                <textarea id="new-task-requirements" name="requirments" class="new-task-textarea" value="{% if form.requirments.value %}{{ form.requirments.value }}{% endif %}"></textarea>
+            </div>
+            
+            {% comment %} <select id="worker" name="worker" style="width: 100%">
+                <option value="" disabled selected>Выберите пользователя</option>
+            </select> {% endcomment %}
+
+        </div>
+        <div class="button-container">
+            <button class="submit-button" type="submit">Создать</button>
+        </div>
+    </form>
+    <div class="button-container">
+        <a href={% url "users:tasks_for_me" slug=user.slug %} class="back-to-tasks-link">Назад к задачам</a>
+    </div>
+</main>
+{% comment %} <script>
+    $(document).ready(function () {
+    $('#worker').select2({
+        ajax: {
+            url: '{% url "tasks:user_list" %}',
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    q: params.term
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data.results
+                };
+            },
+            cache: true
+        },
+        placeholder: 'Начните вводить имя пользователя',
+        minimumInputLength: 1,
+        width: 'resolve'
+    });
+});
+</script> {% endcomment %}
+
+{% endblock %}

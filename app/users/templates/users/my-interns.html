@@ -1,0 +1,44 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+{% if interns %}
+    <input type="text" id="search-box" placeholder="Поиск по ФИО..." autocomplete="off">
+    <ul id="interns-list">
+            {% for intern in interns %}
+                <a href={% url "users:profile" slug=intern.slug %}>
+                <li>
+                    {{ intern.last_name }} {{ intern.first_name }} {{ intern.surname }} ({{ intern.email }})
+                </li>
+                <a href={% url "tasks:create-task-for-other" slug=intern.slug %}>Поставить задачу</a>
+            {% endfor %}
+    </ul>
+{% else %}
+    <p> У вас нет стажеров</p>
+    <a href={% url "users:interns_list" %}>Добавить стажера</a>
+{% endif %}
+<script>
+    $(document).ready(function () {
+        $('#search-box').on('input', function () {
+            let query = $(this).val();
+            $.ajax({
+                url: "{% url 'users:search_my_interns' %}",
+                data: { q: query },
+                success: function (data) {
+                    let results = data.results;
+                    let list = $('#interns-list');
+                    list.empty();
+                    if (results.length > 0) {
+                        results.forEach(function (intern) {
+                            list.append(`<li><a href="${intern.profile_url}">${intern.full_name} (${intern.email})</a></li>`);
+                        });
+                    } else {
+                        list.append('<li>У вас нет стажеров</li>');
+                    }
+                }
+        });
+        });
+    });
+</script>
+{% endblock %}

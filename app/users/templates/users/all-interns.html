@@ -1,23 +1,69 @@
 {% extends "base2.html" %}
 {% load static %}
 {% block content %}
-<main>
-    <ul class="employees-list"></ul>
-</main>
 
-<template class="employee-template">
+<link type="text/css" href="{% static 'css/employees.css' %}" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<input type="text" id="search-box" placeholder="Поиск по ФИО..." autocomplete="off">
+<ul id="interns-list">
     {% for intern in interns %}
-    <a href="{% url 'users:profile' slug=intern.slug %}">
-        <li class="employee">
-            <div class="employee-left-container">
-                <img src="./img/user-1.svg">
-            </div>
-            <div class="employee-right-container">
-                <h3 class="employee-name">{{ intern.surname }} {{ intern.first_name }} {{ intern.last_name }}</h3>
-            </div>
+        <a href={% url "users:profile" slug=intern.slug %}>
+        <li>
+            {{ intern.last_name }} {{ intern.first_name }} {{ intern.surname }} ({{ intern.email }})
+            {% if intern.manager %}
+                <span>Уже привязан</span>
+            {% else %}
+                <button class="add-intern-btn" data-id="{{ intern.id }}">Добавить стажера</button>
+            {% endif %}
         </li>
-    </a>
     {% endfor %}
-</template>
+</ul>
+<script>
+    $(document).ready(function () {
+        $('#search-box').on('input', function () {
+            let query = $(this).val();
+            $.ajax({
+                url: "{% url 'users:search_all_interns' %}",
+                data: { q: query },
+                success: function (data) {
+                    let results = data.results;
+                    let list = $('#interns-list');
+                    list.empty();
+                    if (results.length > 0) {
+                        results.forEach(function (intern) {
+                            let button = intern.manager_id === null
+                                ? `<button class="add-intern-btn" data-id="${intern.id}">Добавить стажера</button>`
+                                : `<span>Уже привязан</span>`;
+                            list.append(`<li><a href="${intern.profile_url}">${intern.full_name} (${intern.email})</a> ${button}</li>`);
+                        });
+
+                        $('.add-intern-btn').on('click', function () {
+                            let internId = $(this).data('id');
+                            $.ajax({
+                                url: "{% url 'users:add_intern' 0 %}".replace('/0/', `/${internId}/`),
+                                method: 'POST',
+                                headers: {
+                                    'X-CSRFToken': '{{ csrf_token }}'
+                                },
+                                success: function () {
+                                    alert('Стажер добавлен!');
+                                    $(`[data-id="${internId}"]`).parent().html('<span>Уже привязан</span>');
+                                },
+                                error: function () {
+                                    alert('Ошибка при добавлении стажера.');
+                                }
+                            });
+                        });
+                    } else {
+                        list.append('<li>Стажеры не найдены</li>');
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+
 
 {% endblock %}

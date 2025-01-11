@@ -1,9 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
 from django.core import serializers
+from django.db.models import Q
 
 from app.tasks.models import Task
 from app.users.models import Role, User
@@ -43,7 +45,7 @@ def signup(request):
 
             user = form.instance
 
-            messages.success(request, f"{user.email}, Вы успешно зарегистрированы и вошли в аккаунт")
+            messages.success(request, f"{user.email}, Вы успешно зарегистрированы")
             return redirect(reverse('users:login'))
     else:
         form = UserSignUpForm()
@@ -61,7 +63,7 @@ def edit_profile(request, slug):
         form = UserForm(data=request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            messages.success(request, "Профайл успешно обновлен")
+            messages.success(request, "Профиль успешно обновлен")
             return redirect(reverse('users:profile'))
     else:
         form = UserForm(instance=request.user)  
@@ -100,7 +102,6 @@ def logout(request):
 
 @login_required
 def author_tasks(request, slug):
-
     user = User.objects.get(slug=slug)
     
     context = {
@@ -114,7 +115,6 @@ def author_tasks(request, slug):
 
 @login_required
 def tasks_for_me(request, slug):
-
     user = User.objects.get(slug=slug)
     
     context = {
@@ -124,11 +124,17 @@ def tasks_for_me(request, slug):
 
     return render(request, 'tasks/tasks_for_me.html', context)
 
+
 @login_required
 def add_intern(request, id):
-    intern = User.objects.filter(id=id)
-    intern.manager = request.user
-    intern.save()
+    if request.method == 'POST' and request.user.role.level > 1:
+        intern = User.objects.get(id=id)
+        if intern.role.level == 1 and intern.manager is None: 
+            intern.manager = request.user
+            intern.save()
+            return JsonResponse({"status": "success"})
+    return JsonResponse({"status": "error"}, status=400)
+
 
 @login_required
 def interns_list(request):
@@ -141,12 +147,54 @@ def interns_list(request):
     return render(request, 'users/all-interns.html', context)
 
 
-# def my_interns_list(request):
-#     manager = User.objects.get(id=request.id)
-#     interns = manager.subordinates.all()
-    
-#     context = {
-#         "interns": interns
-#     }
+def search_all_interns(request):
+    query = request.GET.get('q', '').strip() 
+    interns = User.objects.filter(
+            Q(role__level=1, first_name__icontains=query) |
+            Q(role__level=1, last_name__icontains=query) |
+            Q(role__level=1, surname__icontains=query)
+    )
 
-#     return render(request, 'users/interns_list', context)
+    results = [
+        {
+            "id": intern.id,
+            "full_name": f"{intern.last_name} {intern.first_name} {intern.surname}",
+            "email": intern.email,
+            "profile_url": reverse('users:profile', kwargs={'slug': intern.slug}),
+            "manager_id": intern.manager.id if intern.manager else None
+        }
+        for intern in interns
+    ]
+
+    return JsonResponse({"results": results})
+
+
+def my_interns_list(request):
+    interns = User.objects.filter(manager=request.user.id)
+    
+    context = {
+        "interns": interns
+    }
+
+    return render(request, 'users/my-interns.html', context)
+
+
+def search_my_interns(request):
+    query = request.GET.get('q', '').strip() 
+    interns = User.objects.filter(
+            Q(role__level=1, user__manager=request.user, first_name__icontains=query) |
+            Q(role__level=1, user__manager=request.user, last_name__icontains=query) |
+            Q(role__level=1, user__manager=request.user, surname__icontains=query)
+    )
+
+    results = [
+        {
+            "id": intern.id,
+            "full_name": f"{intern.last_name} {intern.first_name} {intern.surname}",
+            "email": intern.email,
+            "profile_url": reverse('users:profile', kwargs={'slug': intern.slug}),
+        }
+        for intern in interns
+    ]
+
+    return JsonResponse({"results": results})
