@@ -45,7 +45,7 @@ def create_task_for_other(request, slug):
             task.worker = worker
             task.status = False
             task.save()
-            return redirect(reverse('users:my-inters'))
+            return redirect(reverse('users:my_interns'))
 
     else:
         form = TaskForm()
@@ -54,6 +54,7 @@ def create_task_for_other(request, slug):
         'title': "Создание задачи",
         'form': form,
         'worker': worker,
+        'slug': slug,
     }
     return render(request, 'tasks/create-task-for-other.html', context)
 

@@ -11,7 +11,7 @@
                 <li>
                     {{ intern.last_name }} {{ intern.first_name }} {{ intern.surname }} ({{ intern.email }})
                 </li>
-                <a href={% url "tasks:create_task-for-other" worker=intern.slug %}>Поставить задачу</a>
+                <a href={% url "tasks:create-task-for-other" slug=intern.slug %}>Поставить задачу</a>
             {% endfor %}
     </ul>
 {% else %}

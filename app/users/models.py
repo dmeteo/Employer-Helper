@@ -37,7 +37,7 @@ class User(AbstractUser):
         on_delete=models.SET_NULL, 
         null=True, 
         blank=True,
-        related_name="subordinates",  # получить всех стажеров
+        related_name="subordinates", 
         verbose_name="Руководитель"
     )
 

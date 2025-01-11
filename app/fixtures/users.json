@@ -1,0 +1,287 @@
+[
+    {
+        "model": "users.user",
+        "pk": 1,
+        "fields": {
+            "email": "intern1@example.com",
+            "first_name": "Иван",
+            "last_name": "Иванов",
+            "surname": "Петрович",
+            "phone_number": "+79001234567",
+            "image": null,
+            "slug": "ivanov-ivan-petrovich",
+            "role": 1,
+            "manager": null
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 2,
+        "fields": {
+            "email": "mentor1@example.com",
+            "first_name": "Петр",
+            "last_name": "Петров",
+            "surname": "Иванович",
+            "phone_number": "+79007654321",
+            "image": null,
+            "slug": "petrov-petr-ivanovich",
+            "role": 2,
+            "manager": null
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 3,
+        "fields": {
+            "email": "intern2@example.com",
+            "first_name": "Сергей",
+            "last_name": "Сергеев",
+            "surname": "Алексеевич",
+            "phone_number": "+79009876543",
+            "image": null,
+            "slug": "sergeev-sergey-alekseevich",
+            "role": 1,
+            "manager": 2
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 4,
+        "fields": {
+            "email": "intern3@example.com",
+            "first_name": "Алексей",
+            "last_name": "Алексеев",
+            "surname": "Викторович",
+            "phone_number": "+79005554433",
+            "image": null,
+            "slug": "alekseev-alexey-viktorovich",
+            "role": 1,
+            "manager": 2
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 5,
+        "fields": {
+            "email": "intern4@example.com",
+            "first_name": "Ольга",
+            "last_name": "Смирнова",
+            "surname": "Андреевна",
+            "phone_number": "+79003332211",
+            "image": null,
+            "slug": "smirnova-olga-andreevna",
+            "role": 1,
+            "manager": 2
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 6,
+        "fields": {
+            "email": "intern5@example.com",
+            "first_name": "Мария",
+            "last_name": "Кузнецова",
+            "surname": "Ивановна",
+            "phone_number": "+79002221100",
+            "image": null,
+            "slug": "kuznetsova-mariya-ivanovna",
+            "role": 1,
+            "manager": 2
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 7,
+        "fields": {
+            "email": "intern6@example.com",
+            "first_name": "Дмитрий",
+            "last_name": "Орлов",
+            "surname": "Сергеевич",
+            "phone_number": "+79001122334",
+            "image": null,
+            "slug": "orlov-dmitry-sergeevich",
+            "role": 1,
+            "manager": null
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 8,
+        "fields": {
+            "email": "intern7@example.com",
+            "first_name": "Анна",
+            "last_name": "Новикова",
+            "surname": "Павловна",
+            "phone_number": "+79007778899",
+            "image": null,
+            "slug": "novikova-anna-pavlovna",
+            "role": 1,
+            "manager": null
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 9,
+        "fields": {
+            "email": "intern8@example.com",
+            "first_name": "Екатерина",
+            "last_name": "Соколова",
+            "surname": "Александровна",
+            "phone_number": "+79008889900",
+            "image": null,
+            "slug": "sokolova-ekaterina-aleksandrovna",
+            "role": 1,
+            "manager": null
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 10,
+        "fields": {
+            "email": "intern9@example.com",
+            "first_name": "Андрей",
+            "last_name": "Захаров",
+            "surname": "Михайлович",
+            "phone_number": "+79006665544",
+            "image": null,
+            "slug": "zakharov-andrey-mikhailovich",
+            "role": 1,
+            "manager": null
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 11,
+        "fields": {
+            "email": "intern10@example.com",
+            "first_name": "Юлия",
+            "last_name": "Тарасова",
+            "surname": "Игоревна",
+            "phone_number": "+79001233211",
+            "image": null,
+            "slug": "tarasova-yuliya-igorevna",
+            "role": 1,
+            "manager": null
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 12,
+        "fields": {
+            "email": "intern11@example.com",
+            "first_name": "Владимир",
+            "last_name": "Федоров",
+            "surname": "Геннадьевич",
+            "phone_number": "+79001234555",
+            "image": null,
+            "slug": "fedorov-vladimir-gennadievich",
+            "role": 1,
+            "manager": null
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 13,
+        "fields": {
+            "email": "intern12@example.com",
+            "first_name": "Максим",
+            "last_name": "Григорьев",
+            "surname": "Анатольевич",
+            "phone_number": "+79005553322",
+            "image": null,
+            "slug": "grigorev-maksim-anatolevich",
+            "role": 1,
+            "manager": null
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 14,
+        "fields": {
+            "email": "intern13@example.com",
+            "first_name": "Татьяна",
+            "last_name": "Морозова",
+            "surname": "Петровна",
+            "phone_number": "+79009998877",
+            "image": null,
+            "slug": "morozova-tatyana-petrovna",
+            "role": 1,
+            "manager": null
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 15,
+        "fields": {
+            "email": "intern14@example.com",
+            "first_name": "Василий",
+            "last_name": "Егоров",
+            "surname": "Владимирович",
+            "phone_number": "+79004441122",
+            "image": null,
+            "slug": "egorov-vasiliy-vladimirovich",
+            "role": 1,
+            "manager": null
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 16,
+        "fields": {
+            "email": "intern15@example.com",
+            "first_name": "Александра",
+            "last_name": "Борисова",
+            "surname": "Олеговна",
+            "phone_number": "+79001119988",
+            "image": null,
+            "slug": "borisova-alexandra-olegovna",
+            "role": 1,
+            "manager": null
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 17,
+        "fields": {
+            "email": "intern16@example.com",
+            "first_name": "Галина",
+            "last_name": "Романова",
+            "surname": "Александровна",
+            "phone_number": "+79002223344",
+            "image": null,
+            "slug": "romanova-galina-aleksandrovna",
+            "role": 1,
+            "manager": null
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 18,
+        "fields": {
+            "email": "intern17@example.com",
+            "first_name": "Олег",
+            "last_name": "Зиновьев",
+            "surname": "Петрович",
+            "phone_number": "+79004442233",
+            "image": null,
+            "slug": "zinoviev-oleg-petrovich",
+            "role": 1,
+            "manager": null
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 19,
+        "fields": {
+            "email": "intern18@example.com",
+            "first_name": "Анастасия",
+            "last_name": "Королева",
+            "surname": "Владимировна",
+            "phone_number": "+79008887766",
+            "image": null,
+            "slug": "koroleva-anastasia-vladimirovna",
+            "role": 1,
+            "manager": null
+        }
+    }
+]

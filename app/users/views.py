@@ -170,8 +170,7 @@ def search_all_interns(request):
 
 
 def my_interns_list(request):
-    manager = User.objects.get(id=request.user.id)
-    interns = manager.subordinates.all()
+    interns = User.objects.filter(manager=request.user.id)
     
     context = {
         "interns": interns
