@@ -11,43 +11,52 @@ from app.tasks.models import Task
 from app.users.models import User
 
 
-def create_task(request):
+def create_task_for_me(request):
     if request.method == "POST":
-        if request.user.role.level > 1:
-            create_task_for_other(request=request)
-        else:
-            create_task_for_me(request=request)
+        form = TaskForm(request.POST or None)
+        if form.is_valid():
+            task = form.save(commit=False)
+            task.author = request.user
+            task.worker = request.user
+            task.status = False
+            task.save()
+            return redirect(reverse('main:index'))
+
     else:
         form = TaskForm()
     
     context = {
         'title': "Создание задачи",
         'form': form,
+        'worker': request.user,
     }
-    return render(request, 'tasks/create-task.html', context)
+    return render(request, 'tasks/create-task-for-me.html', context)
 
 
-def create_task_for_other(request):
-    form = TaskForm(request.POST or None)
-    if form.is_valid():
-        task = form.save(commit=False)
-        task.author = request.user
-        worker_id = request.POST.get('worker')
-        task.worker = User.objects.get(id=worker_id)
-        task.status = False
-        task.save()
-        return redirect(reverse('main:index'))
 
+def create_task_for_other(request, slug):
+    worker = User.objects.get(slug=slug)
+    if request.method == "POST":
+        form = TaskForm(request.POST or None)
+        if form.is_valid():
+            task = form.save(commit=False)
+            task.author = request.user
+            worker_id = worker
+            task.worker = worker
+            task.status = False
+            task.save()
+            return redirect(reverse('users:my-inters'))
 
-def create_task_for_me(request):
-    form = TaskForm(request.POST or None)
-    if form.is_valid():
-        task = form.save(commit=False)
-        task.author = request.user
-        task.worker = request.user
-        task.status = False
-        task.save()
-        return redirect(reverse('main:index'))
+    else:
+        form = TaskForm()
+    
+    context = {
+        'title': "Создание задачи",
+        'form': form,
+        'worker': worker,
+    }
+    return render(request, 'tasks/create-task-for-other.html', context)
+
 
 
 def task_detail(request, pk):

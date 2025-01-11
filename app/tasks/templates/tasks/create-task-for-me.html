@@ -5,10 +5,12 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <main>
-    <form class="create-task-form" action="{% url "tasks:create-task"  %}" method="post">
+    <form class="create-task-form" action="{% url "tasks:create-task-for-me" %}" method="post">
+        <h1>Задача для {{ worker.last_name }} {{ worker.first_name }} {{ worker.surname }}</h1>
+        <h1>  .</h1>
         {% csrf_token %}
         <div class="inputs-grid">
-
+            
             <div class="input-container">
                 <label class="new-task-label" for="new-task-name">Название</label>
                 <input type="text" id="new-task-name" name="title" class="new-task-input" autocomplete="off" value="{% if form.title.value %}{{ form.title.value }}{% endif %}" autofocus required>
@@ -30,11 +32,10 @@
                 <label class="new-task-label" for="new-task-requirements">Требования</label>
                 <textarea id="new-task-requirements" name="requirments" class="new-task-textarea" value="{% if form.requirments.value %}{{ form.requirments.value }}{% endif %}"></textarea>
             </div>
-
-            <label for="worker">Исполнитель:</label>
-            <select id="worker" name="worker" style="width: 100%">
+            
+            {% comment %} <select id="worker" name="worker" style="width: 100%">
                 <option value="" disabled selected>Выберите пользователя</option>
-            </select>
+            </select> {% endcomment %}
 
         </div>
         <div class="button-container">
@@ -45,7 +46,7 @@
         <a href={% url "users:tasks_for_me" slug=user.slug %} class="back-to-tasks-link">Назад к задачам</a>
     </div>
 </main>
-<script>
+{% comment %} <script>
     $(document).ready(function () {
     $('#worker').select2({
         ajax: {
@@ -69,6 +70,6 @@
         width: 'resolve'
     });
 });
-</script>
+</script> {% endcomment %}
 
 {% endblock %}

@@ -102,7 +102,6 @@ def logout(request):
 
 @login_required
 def author_tasks(request, slug):
-
     user = User.objects.get(slug=slug)
     
     context = {
@@ -116,7 +115,6 @@ def author_tasks(request, slug):
 
 @login_required
 def tasks_for_me(request, slug):
-
     user = User.objects.get(slug=slug)
     
     context = {
@@ -149,7 +147,7 @@ def interns_list(request):
     return render(request, 'users/all-interns.html', context)
 
 
-def search_interns(request):
+def search_all_interns(request):
     query = request.GET.get('q', '').strip() 
     interns = User.objects.filter(
             Q(role__level=1, first_name__icontains=query) |
@@ -171,13 +169,33 @@ def search_interns(request):
     return JsonResponse({"results": results})
 
 
-
-# def my_interns_list(request):
-#     manager = User.objects.get(id=request.id)
-#     interns = manager.subordinates.all()
+def my_interns_list(request):
+    manager = User.objects.get(id=request.user.id)
+    interns = manager.subordinates.all()
     
-#     context = {
-#         "interns": interns
-#     }
+    context = {
+        "interns": interns
+    }
 
-#     return render(request, 'users/interns_list', context)
+    return render(request, 'users/my-interns.html', context)
+
+
+def search_my_interns(request):
+    query = request.GET.get('q', '').strip() 
+    interns = User.objects.filter(
+            Q(role__level=1, user__manager=request.user, first_name__icontains=query) |
+            Q(role__level=1, user__manager=request.user, last_name__icontains=query) |
+            Q(role__level=1, user__manager=request.user, surname__icontains=query)
+    )
+
+    results = [
+        {
+            "id": intern.id,
+            "full_name": f"{intern.last_name} {intern.first_name} {intern.surname}",
+            "email": intern.email,
+            "profile_url": reverse('users:profile', kwargs={'slug': intern.slug}),
+        }
+        for intern in interns
+    ]
+
+    return JsonResponse({"results": results})
