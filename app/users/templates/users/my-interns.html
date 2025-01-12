@@ -6,39 +6,21 @@
 {% if interns %}
     <input type="text" id="search-box" placeholder="Поиск по ФИО..." autocomplete="off">
     <ul id="interns-list">
-            {% for intern in interns %}
-                <a href={% url "users:profile" slug=intern.slug %}>
-                <li>
-                    {{ intern.last_name }} {{ intern.first_name }} {{ intern.surname }} ({{ intern.email }})
-                </li>
-                <a href={% url "tasks:create-task-for-other" slug=intern.slug %}>Поставить задачу</a>
-            {% endfor %}
+        {% for intern in interns %}
+            <a href={% url "users:profile" slug=intern.slug %}>
+            <li>
+                {{ intern.last_name }} {{ intern.first_name }} {{ intern.surname }} ({{ intern.email }})
+            </li>
+            <a href={% url "tasks:create-task-for-other" slug=intern.slug %}>Поставить задачу</a>
+        {% endfor %}
     </ul>
 {% else %}
     <p> У вас нет стажеров</p>
-    <a href={% url "users:interns_list" %}>Добавить стажера</a>
 {% endif %}
+<a href={% url "users:interns_list" %}>Добавить стажера</a>
 <script>
-    $(document).ready(function () {
-        $('#search-box').on('input', function () {
-            let query = $(this).val();
-            $.ajax({
-                url: "{% url 'users:search_my_interns' %}",
-                data: { q: query },
-                success: function (data) {
-                    let results = data.results;
-                    let list = $('#interns-list');
-                    list.empty();
-                    if (results.length > 0) {
-                        results.forEach(function (intern) {
-                            list.append(`<li><a href="${intern.profile_url}">${intern.full_name} (${intern.email})</a></li>`);
-                        });
-                    } else {
-                        list.append('<li>У вас нет стажеров</li>');
-                    }
-                }
-        });
-        });
-    });
+    const searchInternsUrl = "{% url 'users:search_my_interns' %}";
+    const addTaskForInternUrl = "{% url 'tasks:create-task-for-other' 0 %}";
 </script>
+<script src="{% static 'js/my-interns.js' %}"></script>
 {% endblock %}

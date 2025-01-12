@@ -26,6 +26,7 @@ def create_task_for_me(request):
         form = TaskForm()
     
     context = {
+        "header": "Создание задачи",
         'title': "Создание задачи",
         'form': form,
         'worker': request.user,

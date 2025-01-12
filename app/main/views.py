@@ -9,9 +9,13 @@ def index(request):
     if not(request.user.is_authenticated):
         return redirect(reverse('users:login'))
     
+    if (request.user.role.level > 1):
+        return redirect(reverse('users:my_interns'))
+    
     task = Task.objects.filter(worker=request.user)
 
     context = {
+        'header': "Добро пожаловать, " + request.user.first_name,
         'tasks': serializers.serialize('json', task)
     }
 
