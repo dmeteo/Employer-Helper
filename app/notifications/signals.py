@@ -16,3 +16,17 @@ def notify_intern_on_manager_assignment(sender, instance, created, **kwargs):
             message=message,
             type="info"
         )
+
+
+@receiver(post_save, sender=User)
+def notify_manager_on_intern_assignment(sender, instance, created, **kwargs):
+    if not instance.role or instance.role.level != 1:
+        return
+
+    if instance.manager:
+        message = f"Вам назначен стажёр: {instance.manager.last_name} {instance.manager.first_name}."
+        NotificationService.create_notification(
+            recipient=instance.manager,
+            message=message,
+            type="info"
+        )
