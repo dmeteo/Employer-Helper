@@ -1,7 +1,7 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from app.users.models import User
-from notifications.services import NotificationService
+from app.notifications.services import NotificationService
 
 
 @receiver(post_save, sender=User)
@@ -9,10 +9,10 @@ def notify_intern_on_manager_assignment(sender, instance, created, **kwargs):
     if not instance.role or instance.role.level != 1:
         return
 
-    if instance.manager:
+    if not created and instance.tracker.has_changed('manager'):
         message = f"Вам назначен руководитель: {instance.manager.last_name} {instance.manager.first_name}."
         NotificationService.create_notification(
-            recipient=instance,
+            user=instance,
             message=message,
             type="info"
         )
@@ -23,10 +23,10 @@ def notify_manager_on_intern_assignment(sender, instance, created, **kwargs):
     if not instance.role or instance.role.level != 1:
         return
 
-    if instance.manager:
-        message = f"Вам назначен стажёр: {instance.manager.last_name} {instance.manager.first_name}."
+    if not created and instance.tracker.has_changed('manager'):
+        message = f"Вам назначен стажёр: {instance.last_name} {instance.first_name}."
         NotificationService.create_notification(
-            recipient=instance.manager,
+            user=instance.manager,
             message=message,
             type="info"
         )

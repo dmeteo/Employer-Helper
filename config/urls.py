@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('app.main.urls', namespace='main')),
     path('', include('app.users.urls', namespace='users')),
     path('tasks/', include('app.tasks.urls', namespace='tasks')),
+    path('notifications/', include('app.notifications.urls', namespace='notifications')),
 ]
 
 if settings.DEBUG:

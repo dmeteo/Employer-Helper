@@ -1,9 +1,7 @@
-from datetime import datetime
 import os
+from datetime import datetime
 from django.db import models
-from django.forms import ValidationError
 from app.users.models import User
-from config import settings
 
 
 class Task(models.Model):
