@@ -5,7 +5,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <main>
-    <form class="create-task-form" action="{% url "tasks:create-task-for-me" %}" method="post">
+    <form class="create-task-form" action="{% url "tasks:create_task_for_me" %}" method="post">
         <h1>Задача для {{ worker.last_name }} {{ worker.first_name }} {{ worker.surname }}</h1>
         <h1>  .</h1>
         {% csrf_token %}

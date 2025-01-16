@@ -7,18 +7,18 @@ from django.urls import reverse
 from django.db.models import Q
 
 from app.tasks.forms import TaskForm
-from app.tasks.models import Task
+from app.tasks.models import Status, Task
 from app.users.models import User
 
 
 def create_task_for_me(request):
     if request.method == "POST":
-        form = TaskForm(request.POST or None)
+        form = TaskForm(request.POST)
         if form.is_valid():
             task = form.save(commit=False)
             task.author = request.user
             task.worker = request.user
-            task.status = False
+            task.status = Status.objects.get(level=1)
             task.save()
             return redirect(reverse('main:index'))
 
@@ -38,13 +38,13 @@ def create_task_for_me(request):
 def create_task_for_other(request, slug):
     worker = User.objects.get(slug=slug)
     if request.method == "POST":
-        form = TaskForm(request.POST or None)
+        form = TaskForm(request.POST)
         if form.is_valid():
             task = form.save(commit=False)
             task.author = request.user
             worker_id = worker
             task.worker = worker
-            task.status = False
+            task.status = Status.objects.get(level=1)
             task.save()
             return redirect(reverse('users:my_interns'))
 
@@ -95,21 +95,38 @@ def delete_task(request, id):
     return redirect(reverse('main:index'))
 
 
-def complete_task(request, id):
+def task_to_review(request, id):
     if request.method == "POST":
         task = get_object_or_404(Task, id=id)
-        task.status = True
+        task.status = Status.objects.get(level=3)
         task.save()
         return redirect(reverse('main:index'))
     return redirect(reverse('main:index'))
 
-# Задачи для ревью(для ментора)
+
+def back_task_to_intern(request, id):
+    if request.method == "POST":
+        task = get_object_or_404(Task, id=id)
+        task.status = Status.objects.get(level=2)
+        task.save()
+        return redirect(reverse('main:index'))
+    return redirect(reverse('main:index'))
+
+
+def complete_task(request, id):
+    if request.method == "POST":
+        task = get_object_or_404(Task, id=id)
+        task.status = Status.objects.get(level=4)
+        task.save()
+        return redirect(reverse('main:index'))
+    return redirect(reverse('main:index'))
+
 
 # def tasks_for_review(request):
 #     if request.role.level > 1:
 #         tasks = Task.objects.filter(author=request.user) & Task.objects.filter(status__level=2)
         
-#         return render(request, 'tasks/tasks_for_review', {"tasks": tasks})
+#         return render(request, 'tasks/tasks_for_review.html', {"tasks": tasks})
 #     else:
 #         return redirect(reverse('main:index'))
 

@@ -1,9 +1,11 @@
+from datetime import datetime, timedelta
 from django.test import TestCase
 from django.db.models.signals import post_save
 
 from app.users.models import Role, User
+from app.tasks.models import Task
 from app.notifications.models import Notification
-from app.notifications.signals import notify_intern_on_manager_assignment, notify_manager_on_intern_assignment
+from app.notifications.signals import *
 
 
 class NotificationTestCase(TestCase):
@@ -76,3 +78,30 @@ class NotificationTestCase(TestCase):
             0, 
             "Уведомления не должны создаваться при изменении других полей."
         )
+
+    def test_notification_create_task(self):
+        post_save.connect(notify_create_task_to_intern, sender=Task)
+
+        self.assertEqual(Task.objects.filter(worker=self.intern).count(), 0)
+
+        task = Task.objects.create(
+            author=self.manager,
+            worker=self.intern,
+            date_start = datetime.now(),
+            deadline = datetime.now() + timedelta(days=1, hours=3),
+            title="Задача 1",
+            description="Задача",
+            requirments="Требования",
+            status=0,
+        )
+        self.assertEqual(Task.objects.filter(worker=self.intern).count(), 1)
+
+        notification = Notification.objects.get(user=self.intern)
+        expected_message = f"У вас новая задача: {task.title}"
+        self.assertEqual(notification.message, expected_message)
+        self.assertEqual(notification.type, "info")
+
+        self.assertEqual(notification.user, self.intern)
+
+
+        

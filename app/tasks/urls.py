@@ -5,11 +5,11 @@ from app.tasks import views
 app_name = 'tasks'
 
 urlpatterns = [
-    path("create-task/for/me", views.create_task_for_me, name="create-task-for-me"),
-    path("create-task/for/<str:slug>", views.create_task_for_other, name="create-task-for-other"),
-    path("edit-task/", views.edit_task, name="edit-task"),
-    path("<int:pk>/", views.task_detail, name="task-detail"),
-    path("delete-task/<int:id>/", views.delete_task, name="delete-task"),
-    path("complete-task/<int:id>/", views.complete_task, name="complete-task"),
+    path("create_task/for/me", views.create_task_for_me, name="create_task_for_me"),
+    path("create_task/for/<str:slug>", views.create_task_for_other, name="create_task_for_other"),
+    path("edit_task/", views.edit_task, name="edit_task"),
+    path("<int:pk>/", views.task_detail, name="task_detail"),
+    path("delete_task/<int:id>/", views.delete_task, name="delete_task"),
+    path("complete_task/<int:id>/", views.complete_task, name="complete_task"),
     path('user_list/', views.user_list, name='user_list'),
 ]

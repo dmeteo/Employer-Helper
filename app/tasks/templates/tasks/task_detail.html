@@ -32,10 +32,10 @@
     </div>
     
     {% if user.id == task.author.id %}
-        <a href={% url "tasks:delete-task" task.id %}>Удалить задачу</a>
+        <a href={% url "tasks:delete_task" task.id %}>Удалить задачу</a>
     {% endif %}
 
-    <form action="{% url 'tasks:complete-task' task.id %}" method="post">
+    <form action="{% url 'tasks:complete_task' task.id %}" method="post">
         {% csrf_token %}
         <button type="submit">Завершить задачу</button>
     </form>

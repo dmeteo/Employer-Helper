@@ -20,7 +20,7 @@
 <a href={% url "users:interns_list" %}>Добавить стажера</a>
 <script>
     const searchInternsUrl = "{% url 'users:search_my_interns' %}";
-    const addTaskForInternUrl = "{% url 'tasks:create-task-for-other' 0 %}";
+    const addTaskForInternUrl = "{% url 'tasks:create_task_for_other' 0 %}";
 </script>
 <script src="{% static 'js/my-interns.js' %}"></script>
 {% endblock %}
