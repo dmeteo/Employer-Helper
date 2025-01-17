@@ -105,6 +105,7 @@ def author_tasks(request, slug):
     user = User.objects.get(slug=slug)
     
     context = {
+        "header": "Задачи выставленные мной",
         'title': 'Задачи которые вы поставили',
         'author_tasks': Task.objects.filter(author=user),
         'slug': slug
@@ -118,6 +119,7 @@ def tasks_for_me(request, slug):
     user = User.objects.get(slug=slug)
     
     context = {
+        "header": "Мои задачи",
         'tasks': serializers.serialize('json', list(Task.objects.filter(worker=user))),
         'slug': slug
     }
@@ -141,6 +143,7 @@ def interns_list(request):
     interns = User.objects.filter(role__level=1)
     
     context = {
+        "header": "Все стажеры",
         "interns": interns
     }
 
@@ -173,7 +176,8 @@ def my_interns_list(request):
     interns = User.objects.filter(manager=request.user.id)
     
     context = {
-        "interns": interns
+        "header": "Мои стажеры",
+        "interns": interns,
     }
 
     return render(request, 'users/my-interns.html', context)
@@ -182,9 +186,9 @@ def my_interns_list(request):
 def search_my_interns(request):
     query = request.GET.get('q', '').strip() 
     interns = User.objects.filter(
-            Q(role__level=1, user__manager=request.user, first_name__icontains=query) |
-            Q(role__level=1, user__manager=request.user, last_name__icontains=query) |
-            Q(role__level=1, user__manager=request.user, surname__icontains=query)
+            Q(role__level=1, manager_id=request.user.id, first_name__icontains=query) |
+            Q(role__level=1, manager_id=request.user.id, last_name__icontains=query) |
+            Q(role__level=1, manager_id=request.user.id, surname__icontains=query)
     )
 
     results = [
@@ -193,6 +197,7 @@ def search_my_interns(request):
             "full_name": f"{intern.last_name} {intern.first_name} {intern.surname}",
             "email": intern.email,
             "profile_url": reverse('users:profile', kwargs={'slug': intern.slug}),
+            'slug': intern.slug
         }
         for intern in interns
     ]

@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.template.defaultfilters import slugify
 from transliterate import translit
+from model_utils import FieldTracker
 
 from app.users.managers import CustomUserManager
 
@@ -40,6 +41,7 @@ class User(AbstractUser):
         related_name="subordinates", 
         verbose_name="Руководитель"
     )
+    tracker = FieldTracker(fields=['manager'])
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

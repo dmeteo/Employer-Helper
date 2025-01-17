@@ -1,9 +1,17 @@
-from datetime import datetime
 import os
+from datetime import datetime
 from django.db import models
-from django.forms import ValidationError
 from app.users.models import User
-from config import settings
+
+
+class Status(models.Model):
+    name = models.CharField()
+    level = models.SmallIntegerField()
+
+    class Meta:
+        db_table = 'statuses'
+        verbose_name = 'Статус'
+        verbose_name_plural = 'Статусы'
 
 
 class Task(models.Model):
@@ -17,7 +25,11 @@ class Task(models.Model):
     title = models.CharField(max_length=30, blank=False)
     description = models.TextField(max_length=1000, blank=False)
     requirments = models.TextField(max_length=1000, null=True)
-    status = models.BooleanField()
+    status = models.ForeignKey(
+        Status,
+        on_delete=models.CASCADE,
+        related_name="status",
+        null=False)
     worker = models.ForeignKey(
         User, 
         on_delete=models.CASCADE, 
@@ -44,10 +56,6 @@ class TaskFile(models.Model):
 
     def __str__(self):
         return f"Файл в {self.task} загружен {self.user}"
-
-
-class TaskStatus(models.Model):
-    name = models.CharField()
 
 
 class Category(models.Model):

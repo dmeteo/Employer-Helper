@@ -9,7 +9,7 @@ class Notification(models.Model):
         ('error', 'Error'),
     ]
 
-    recipient = models.ForeignKey(
+    user = models.ForeignKey(
         User, 
         on_delete=models.CASCADE, 
         related_name='notifications')
@@ -18,5 +18,11 @@ class Notification(models.Model):
     is_read = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
+
+    class Meta:
+        db_table = 'notifications'
+        verbose_name = 'Уведомление'
+        verbose_name_plural = 'Уведомления'
+
     def __str__(self):
-        return f"{self.recipient.email} - {self.type} - {self.created_at}"
+        return f"{self.user.email} - {self.type} - {self.created_at}"

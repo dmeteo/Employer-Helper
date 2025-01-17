@@ -4,12 +4,12 @@ from .models import Notification
 class NotificationService:
 
     @staticmethod
-    def create_notification(recipient, message, type='info'):
-        if not recipient:
+    def create_notification(user, message, type='info'):
+        if not user:
             raise ValueError("Пользователь не найден")
 
         notification = Notification.objects.create(
-            recipient=recipient,
+            user=user,
             message=message,
             type=type
         )
@@ -28,4 +28,4 @@ class NotificationService:
 
     @staticmethod
     def mark_all_as_read(user):
-        Notification.objects.filter(recipient=user, is_read=False).update(is_read=True)
+        Notification.objects.filter(user=user, is_read=False).update(is_read=True)
